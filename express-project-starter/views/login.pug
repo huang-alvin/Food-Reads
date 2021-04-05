@@ -1,0 +1,10 @@
+extends layout.pug
+    block content
+        form(action="/users" method='post')
+            label(for='email') Email Address
+            input(type='email' name='email' placeholder='Enter email')
+            label(for='password') Password
+            input(type='password' name='password')
+            button(type='submit') Login
+        a(href='/sign-up') Don't have an account? Sign up here.
+    script(src='javascripts/login.js')
