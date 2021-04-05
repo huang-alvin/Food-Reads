@@ -1,0 +1,21 @@
+html
+  head
+    title="Sign Up"
+  body
+    h1="Sign up for Foodreads"
+    div
+    h3="Sign up with email"
+    form(action='/sign-up' method='post')
+        div(id='nameInput')
+            label Name
+            div
+            input(type='text' name='name' placeholder='Name' require)
+        div(id='emailInput')
+            label Email
+            div
+            input(type='email' name='email' placeholder='you@yours.com' require)
+        div(id='passwordInput')
+            label Password
+            div
+            input(type='text' name='password')
+        button(type='submit') Sign Up
