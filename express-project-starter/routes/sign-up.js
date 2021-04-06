@@ -1,10 +1,11 @@
 var express = require("express");
 var router = express.Router();
-const check = require("express-validator");
+const { check, validationResult } = require("express-validator");
 const { User } = require("../models");
-const { asyncHandler, handleValidationErrors } = require("../utils");
+const { asyncHandler } = require("../utils");
 const bcrypt = require("bcryptjs");
-const { getUserToken } = require("../auth");
+
+const { loginUser } = require("../auth");
 
 const userValidator = [
   check("name")
@@ -27,23 +28,29 @@ router.get("/", function (req, res, next) {
 router.post(
   "/sign-up",
   userValidator,
-  handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { name, email, password } = req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const validationErrors = validationResult(req);
+    if (validationErrors.isEmpty()) {
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = User.create({
-      name,
-      email,
-      hashedPassword,
-    });
+      const user = User.create({
+        name,
+        email,
+        hashedPassword,
+      });
 
-    const token = getUserToken(user);
-    res.status(201).json({
-      user: { id: user.id },
-      token,
-    });
+      loginUser(req, res, user);
+      res.redirect("/");
+    } else {
+      errors = validationErrors.array().map((err) => err.msg);
+      res.render("sign-up", {
+        user,
+        errors,
+        // maybe csurf
+      });
+    }
   })
 );
 

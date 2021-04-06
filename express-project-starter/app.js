@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const signUpRouter = require("./routes/sign-up");
 const loginRouter = require("./routes/login");
+const { environment, sessionSecret } = require("./config");
 
 const app = express();
 
@@ -27,7 +28,8 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
-    secret: "superSecret",
+    name: "food-review.sid",
+    secret: sessionSecret,
     store,
     saveUninitialized: false,
     resave: false,
