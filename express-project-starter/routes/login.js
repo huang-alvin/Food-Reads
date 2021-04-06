@@ -29,44 +29,32 @@ router.post(
     const { email, password } = req.body;
     const validationErrors = validationResult(req);
 
-    // if no validationErr
-    // find the user
-    // user check
+    let errors = [];
     if (validationErrors.isEmpty()) {
       const user = await User.findOne({
         where: {
           email,
         },
       });
-    }
-    if (user) {
-      validPassword = await bcrypt.compare(
-        password,
-        user.hashedPassword.toString()
-      );
-    }
-    if (validPassword) {
-      loginUser(req, res, user);
-      res.redirect("/");
-    }
-    // if (!user || !user.validatePassword(password)) {
-    //   // bad credentials
-    //   const err = new Error("Login Failed");
-    //   err.statue = 401;
-    //   err.title = "Login Failed";
-    //   err.errors = ["The provided credentials were invalid."];
-    // }
-    else {
-      // validation criteria failed
-      errors = validationErrors.array().map((err) => err.msg);
-      if (!user || !user.validatePassword(password)) {
-        errors.push("Login Failed, the provided credentials were invalid.");
+      if (user) {
+        validPassword = await bcrypt.compare(
+          password,
+          user.hashedPassword.toString()
+        );
+        if (validPassword) {
+          loginUser(req, res, user);
+          res.redirect("/");
+        }
       }
-      res.render("login", {
-        errors,
-        // maybe csurf
-      });
+      errors.push("Login failed for the provided email address and password");
+    } else {
+      errors = validationErrors.array().map((err) => err.msg);
     }
+    res.render("login", {
+      errors,
+      email,
+      // maybe csurf
+    });
   })
 );
 module.exports = router;
