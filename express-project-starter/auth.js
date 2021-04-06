@@ -3,4 +3,4 @@ const loginUser = (req, res, user) => {
     userId: user.id,
   };
 };
-module.exports = loginUser;
+module.exports = {loginUser};
