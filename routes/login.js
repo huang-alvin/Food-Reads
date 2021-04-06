@@ -48,6 +48,7 @@ router.post(
     } else {
       errors = validationErrors.array().map((err) => err.msg);
     }
+    console.log("kekekekekek", errors);
     res.render("login", {
       errors,
       email,
