@@ -24,10 +24,6 @@ module.exports = {
           key: "id",
         },
       },
-      status: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
