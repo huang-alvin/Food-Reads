@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Book.associate = function (models) {
-    Book.belongsToMany(models.Shelf, { foreignKey: "bookId" });
+    Book.belongsToMany(models.Bookshelf, { through: "Shelf", foreignKey: "bookId", otherKey: "bookshelfId" });
     // Book.belongsToMany(models.Bookshelf, {
     //   through: "Shelves",
     //   foreignKey: "bookId",

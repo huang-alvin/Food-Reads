@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
       },
-      name: { type: DataTypes.STRING(20), allowNull: false, unique: true },
+      name: { type: DataTypes.STRING(20), allowNull: false},
     },
     {}
   );
