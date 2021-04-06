@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcryptjs");
-const { User } = require("../db/models/user");
+const { User } = require("../db/models");
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const { check, validationResult } = require("express-validator");
 const { loginUser } = require("../auth");
@@ -38,7 +38,7 @@ router.post(
         validPassword = await bcrypt.compare(
           password,
           user.hashedPassword.toString()
-        );
+          );
         if (validPassword) {
           loginUser(req, res, user);
           res.redirect("/");
@@ -48,7 +48,6 @@ router.post(
     } else {
       errors = validationErrors.array().map((err) => err.msg);
     }
-    console.log("kekekekekek", errors);
     res.render("login", {
       errors,
       email,
