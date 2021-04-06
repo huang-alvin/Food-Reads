@@ -5,12 +5,15 @@ module.exports = (sequelize, DataTypes) => {
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       shelfId: { type: DataTypes.INTEGER, allowNull: false },
+      status: {
+        type: DataTypes.TEXT, allowNull: false
+      }
     },
     {}
   );
   Bookshelf.associate = function (models) {
     Bookshelf.belongsTo(models.User, { foreignKey: "userId" });
-    Bookshelf.hasMany(models.Shelf, { foreignKey: "shelfId" });
+    Bookshelf.belongsToMany(models.Book, { through: 'Shelf', foreignKey: 'bookshelfId', otherKey: 'bookId' });
   };
   return Bookshelf;
 };

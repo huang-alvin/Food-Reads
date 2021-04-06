@@ -1,4 +1,7 @@
 "use strict";
+
+const { sequelize } = require("../db/models");
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("Bookshelves", {
@@ -16,13 +19,9 @@ module.exports = {
           key: "id",
         },
       },
-      shelfId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "Shelves",
-          key: "id",
-        },
+      status: {
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
