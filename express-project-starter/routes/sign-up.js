@@ -36,8 +36,7 @@ router.post('/sign-up', userValidator, handleValidationErrors, asyncHandler( asy
     const user = User.create({
         name, email, hashedPassword
     });
-
-
+    
 }))
 
 module.exports = router;
