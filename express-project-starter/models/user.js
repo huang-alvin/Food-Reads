@@ -3,17 +3,19 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     "User",
     {
-      email: { type: DataTypes.STRING, allowNull: false, unique: true },
+      email: { type: DataTypes.STRING(50), allowNull: false, unique: true },
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
       },
-      username: { type: DataTypes.STRING, allowNull: false, unique: true },
+      name: { type: DataTypes.STRING(20), allowNull: false, unique: true },
     },
     {}
   );
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Review, { foreignKey: "userId" });
+    User.hasMany(models.Comment, { foreignKey: "userId" });
+    User.belongsTo(models.Bookshelf, { foreignKey: "userId" });
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());

@@ -26,7 +26,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post(
-  "/sign-up",
+  "/",
   userValidator,
   asyncHandler(async (req, res, next) => {
     const { name, email, password } = req.body;

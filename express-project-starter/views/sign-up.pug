@@ -1,3 +1,4 @@
+include utils.pug
 html
   head
     title="Sign Up"
@@ -11,14 +12,14 @@ html
         div(id='nameInput')
             label Name
             div
-            input(type='text' name='name' placeholder='Name' value= user.name require)
+            input(type='text' name='name' placeholder='Name' value=name require)
         div(id='emailInput')
             label Email
             div
-            input(type='email' name='email' placeholder='you@yours.com' value=user.email require)
+            input(type='email' name='email' placeholder='you@yours.com' value=email require)
         div(id='passwordInput')
             label Password
             div
-            input(type='text' name='password')
+            input(type='password' name='password')
         button(type='submit') Sign Up
     a(href='/login') Already have an account? Log in here.
