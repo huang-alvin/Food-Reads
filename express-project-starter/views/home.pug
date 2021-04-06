@@ -1,0 +1,61 @@
+extends layout
+
+append head
+    //- add page specific styles by appending to the head
+    link(rel="stylesheet" href="/stylesheets/index.css")
+    //- add page specific js
+    script(src="/javascripts/index.js" type="module" defer)
+
+block content
+    main(class='main')
+        div(class='main-left')
+            div(class='currently-reading')
+                span(class="main-right-heading") Currently Reading
+                    div(class="book-cards card-1")
+                        img(src="https://images-na.ssl-images-amazon.com/images/I/51g+PEx-+CL._SX399_BO1,204,203,200_.jpg")
+                        a(href="books/14") Bong Apetit
+                        p By Editors of MUNCHIES
+                    div(class="book-cards card-2")
+                        img(src="https://images-na.ssl-images-amazon.com/images/I/51bTzHmYQDL._SX393_BO1,204,203,200_.jpg")
+                        a(href="books/8") Edibles: Small Bites for the Modern Cannabis Kitchen
+                        p By Stephanie Hua
+                    div(class="book-cards card-3")
+                        img(src="https://images-na.ssl-images-amazon.com/images/I/51g+PEx-+CL._SX399_BO1,204,203,200_.jpg")
+                        a(href="books/1") The Official High Times Cannabis Cookbook
+                        p Editors of High Times Magazine
+            div(class="reading-challenge") 2021 Reading Challenge
+            div(class='want-to-read')
+                span(class="main-left-heading") Want To Read
+                    div(class="book-cards square")
+                        a(href='books/1')
+                            img(src="https://images-na.ssl-images-amazon.com/images/I/51g+PEx-+CL._SX399_BO1,204,203,200_.jpg")
+
+                    div(class="book-cards square")
+                        a(href='books/2')
+                            img(src="https://images-na.ssl-images-amazon.com/images/I/51bTzHmYQDL._SX393_BO1,204,203,200_.jpg")
+
+                    div(class="book-cards square")
+                        a(href='books/3')
+                            img(src="https://images-na.ssl-images-amazon.com/images/I/5164GbIEEbL._SX374_BO1,204,203,200_.jpg")
+
+                    div(class="book-cards square")
+                        a(href='books/4')
+                            img(src="https://images-na.ssl-images-amazon.com/images/I/51g+PEx-+CL._SX399_BO1,204,203,200_.jpg")
+
+                    div(class="book-cards square")
+                        a(href='books/5')
+                            img(src="https://images-na.ssl-images-amazon.com/images/I/51bTzHmYQDL._SX393_BO1,204,203,200_.jpg")
+
+                    div(class="book-cards square")
+                        a(href='books/6')
+                            img(src="https://images-na.ssl-images-amazon.com/images/I/5164GbIEEbL._SX374_BO1,204,203,200_.jpg")
+
+            div(class='bookshelves')
+                span(class="main-left-heading") Bookshelves
+                ul
+                    li: a(href="bookshelves/1") Want To Read
+                    li: a(href="bookshelves/2") Currently Reading
+                    li: a(href="bookshelves/3") Already Read
+
+
+
