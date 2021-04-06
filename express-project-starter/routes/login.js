@@ -1,9 +1,7 @@
-const loginForm = document.querySelector("#login-form");
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcryptjs");
-const { getUserToken } = require("../auth");
-const { User } = require("../../models");
+const { User } = require("../models/user");
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const { check, validationResult } = require("express-validator");
 const { loginUser } = require("../auth");
