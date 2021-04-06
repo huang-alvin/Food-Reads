@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const signUpRouter = require("./routes/sign-up");
 const loginRouter = require("./routes/login");
+const bookshelfRouter = require('./routes/bookshelf');
 const { environment, sessionSecret } = require("./config");
 const { restoreUser } = require('./auth');
 
@@ -37,14 +38,15 @@ app.use(
   })
   );
 
-  // create Session table if it doesn't already exist
-  store.sync();
+// create Session table if it doesn't already exist
+store.sync();
 
-  app.use(restoreUser)
-  app.use("/", indexRouter);
-  app.use("/users", usersRouter);
-  app.use("/sign-up", signUpRouter);
-  app.use("/login", loginRouter);
+app.use(restoreUser)
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/sign-up", signUpRouter);
+app.use("/login", loginRouter);
+app.use('/bookshelf', bookshelfRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
