@@ -1,6 +1,11 @@
-extends layout.pug
 include utils.pug
-    block content
+html
+  head
+    title="Login"
+    link(rel='stylesheet' href='/stylesheets/reset.css')
+  body
+    h1="Login for Foodreads"
+    div
         +validationErrorSummary(errors)
         form(action="/login" method='post' id='login-form' )
             label(for='email') Email Address
