@@ -4,6 +4,7 @@ html
   body
     h1="Sign up for Foodreads"
     div
+    +validationErrorSummary(errors)
     h3="Sign up with email"
     form(action='/sign-up' method='post')
         div(id='nameInput')
@@ -19,3 +20,4 @@ html
             div
             input(type='text' name='password')
         button(type='submit') Sign Up
+    a(href='/login') Already have an account? Log in here.
