@@ -37,4 +37,4 @@ const logoutUser = (req, res) => {
   delete req.session.auth;
 };
 
-module.exports = {loginUser, restoreUser,};
+module.exports = {loginUser, restoreUser, logoutUser};
