@@ -5,7 +5,7 @@ html
         title="Food Reads"
         meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
-        //- link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/bookshelf.css')
   body
     nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
       a(class='navbar-brand' href='/') Foodreads
@@ -24,11 +24,13 @@ html
           span(class='navbar-text px-4')
             a(class='btn btn-sm btn-dark mr-2' href='/login') Login
             a(class='btn btn-sm btn-dark' href='/sign-up') Sign Up
-    label Bookshelf
+
+
+    label(id='bookshelf') Bookshelf
         each shelf in bookshelf
           li
             a(href='google.com') #{shelf.status}
-    table(name='book-list')
+    table(id='book-list')
         thead
             tr
                 th #
@@ -39,12 +41,17 @@ html
                 th shelf
                 th date added
         tbody
-            //- each book in shelf
-            //-     tr
-            //-         td #{book.id}
-            //-         td #{book.cover}
-            //-         td #{book.title}
-            //-         td #{book.author}
-            //-         td #{book.rating}
-            //-         td #{book.shelves}
-            //-         td #{book.createdAt}
+            each book in books
+                tr
+                    td #{book.id}
+                    td
+                      img(src=book.cover class='coverImg')
+                    td #{book.name}
+                    td #{book.author}
+                    td
+                      if book.Reviews[0]
+                        ul #{book.Reviews[0].rating}
+                      else
+                        ul No reviews yet
+                    td Find the shelf
+                    td #{book.date_published}
