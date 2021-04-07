@@ -1,4 +1,5 @@
-Reviews:
+Shelves:
+
 'use strict';
 
 module.exports = {
@@ -13,14 +14,11 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Reviews', [
-      {
-        userId: 1,
-        bookId: 1,
-        rating: 4,
+    return queryInterface.bulkInsert('Shelves', [
+      { bookId: 1,
+        bookshelfId: 1,
         createdAt: new Date(),
-        updatedAt: new Date()
-      }
+        updatedAt: new Date()}
     ], {});
   },
 
@@ -32,46 +30,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Reviews', null, {});
+      return queryInterface.bulkDelete('Shelves', null, {});
   }
 };
-
-Bookshelf:
-
-'use strict';
-
-module.exports = {
-  up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
-    return queryInterface.bulkInsert('Bookshelves', [
-      {
-      userId: 1,
-      status: 'Will-Read',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      }
-    ], {});
-  },
-
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
-    return queryInterface.bulkDelete('Bookshelves', null, {});
-  }
-};
-
-

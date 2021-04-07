@@ -14,7 +14,7 @@ module.exports = {
     */
     return queryInterface.bulkInsert('Shelves', [
       { bookId: 1,
-        bookShelfId: 1,
+        bookshelfId: 1,
         createdAt: new Date(),
         updatedAt: new Date()}
     ], {});
