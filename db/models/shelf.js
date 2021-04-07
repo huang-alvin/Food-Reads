@@ -4,13 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     "Shelf",
     {
       bookId: { type: DataTypes.INTEGER, allowNull: false },
-      bookShelfId: { type: DataTypes.INTEGER, allowNull: false },
+      bookshelfId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {}
   );
   Shelf.associate = function (models) {
     Shelf.hasMany(models.Book, { foreignKey: "bookId" });
-    Shelf.belongsTo(models.Bookshelf, { foreignKey: "bookShelfId" });
+    Shelf.belongsTo(models.Bookshelf, { foreignKey: "bookshelfId" });
   };
   return Shelf;
 };

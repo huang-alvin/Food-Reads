@@ -13,7 +13,8 @@ module.exports = {
       }], {});
     */
       return queryInterface.bulkInsert('Users', [
-        {name: 'Jack', email: 'jack@gmail.com', hashedPassword: 'password',           createdAt: new Date(),
+        {name: 'Demo', email: 'demo@gmail.com', hashedPassword: '$2a$10$WmjuqsDYmRW14s0Ku3p8lu.POTq997W.5j7xIFJOGJFANwhVY1LBi',
+        createdAt: new Date(),
         updatedAt: new Date()}
       ], {});
   },
