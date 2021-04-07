@@ -6,13 +6,13 @@ const logger = require("morgan");
 const { sequelize } = require("./db/models");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const indexRouter = require("./routes/index");
+const homeRouter = require("./routes/home");
 const usersRouter = require("./routes/users");
 const signUpRouter = require("./routes/sign-up");
 const loginRouter = require("./routes/login");
 const bookshelfRouter = require('./routes/bookshelf');
 const { environment, sessionSecret } = require("./config");
-const { restoreUser } = require('./auth');
+const { restoreUser } = require("./auth");
 
 const app = express();
 
@@ -36,7 +36,7 @@ app.use(
     saveUninitialized: false,
     resave: false,
   })
-  );
+);
 
 // create Session table if it doesn't already exist
 store.sync();

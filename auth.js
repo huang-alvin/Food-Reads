@@ -1,5 +1,4 @@
-
-const db = require('./db/models')
+const db = require("./db/models");
 
 const loginUser = (req, res, user) => {
   req.session.auth = {
@@ -37,4 +36,11 @@ const logoutUser = (req, res) => {
   delete req.session.auth;
 };
 
-module.exports = {loginUser, restoreUser,};
+const sessionCheck = (req, res, next) => {
+  if (!res.locals.authenticated) {
+    res.redirect("/login");
+  } else {
+    next();
+  }
+};
+module.exports = { loginUser, restoreUser, logoutUser, sessionCheck };
