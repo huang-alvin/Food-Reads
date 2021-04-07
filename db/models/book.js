@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "Book",
     {
       name: { type: DataTypes.STRING(50), allowNull: false },
+      cover: { type: DataTypes.STRING(255), allowNull: false },
       author: { type: DataTypes.STRING(50), allowNull: false },
       publisher: { type: DataTypes.STRING(50), allowNull: false },
       pages: { type: DataTypes.INTEGER, allowNull: false },
