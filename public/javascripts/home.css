@@ -1,0 +1,29 @@
+#container {
+  display: grid;
+  height: 100%;
+  margin: auto;
+  width: 100%;
+  grid-template-areas:
+    "left center center right"
+    "footer footer footer footer";
+  grid-template-rows: 80% 20%;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+.left {
+  grid-area: left;
+}
+.center {
+  grid-area: center;
+}
+.right {
+  grid-area: right;
+}
+footer {
+  grid-area: footer;
+  text-align: center;
+}
