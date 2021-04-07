@@ -45,7 +45,7 @@ router.post(
       await user.save();
 
       loginUser(req, res, user);
-      res.redirect("/");
+      res.redirect("/home");
     } else {
       errors = validationErrors.array().map((err) => err.msg);
       res.render("sign-up", {
