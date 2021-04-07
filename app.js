@@ -42,7 +42,7 @@ app.use(
 store.sync();
 
 app.use(restoreUser)
-app.use("/", indexRouter);
+app.use("/home", homeRouter);
 app.use("/users", usersRouter);
 app.use("/sign-up", signUpRouter);
 app.use("/login", loginRouter);
