@@ -1,0 +1,57 @@
+#container {
+  display: grid;
+  height: 100%;
+  margin: auto;
+  width: 100%;
+  grid-template-areas:
+    "left center center right"
+    "footer footer footer footer";
+  grid-template-rows: 80% 20%;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+.left {
+  grid-area: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.center {
+  margin-top: 5%;
+  grid-area: center;
+}
+.right {
+  grid-area: right;
+}
+footer {
+  grid-area: footer;
+  text-align: center;
+}
+.new-books {
+  display: grid;
+  grid-template-areas:
+    "1 2 3"
+    "4 5 6"
+    "7 8 9";
+  grid-template-rows: repeat(3, fr);
+  grid-template-columns: repeat(3, fr);
+  height: 75%;
+}
+.bookshelf {
+  /* margin-top: 50%; */
+  text-align: center;
+}
+h5 {
+  text-align: center;
+}
+.new-books__item-1__info-card {
+  display: none;
+}
+.new-books__item-1__info-card:hover {
+  display: block;
+  background-color: black;
+}

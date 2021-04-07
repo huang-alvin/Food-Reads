@@ -2,15 +2,34 @@ extends layout
 
 append head
     //- add page specific styles by appending to the head
-    //- link(rel="stylesheet" href="/home.css")
+    link(rel="stylesheet" href="/stylesheets/home.css")
     //- add page specific js
     script(src="/javascripts/index.js" type="module" defer)
 
 block content
     div.left
         .bookshelf
+            p.bookshelf__header: a(href='/bookshelf') My Bookshelf
+            .bookshelf__default
+                ul
+                    li: a(href='bookshelf/1') Currently Reading
+                    li: a(href='bookshelf/2') Will Read
+                    li: a(href='bookshelf/3') Finished Reading
+
 
     div.center
+        h5 New Books
+        div.new-books
+            div.new-books__item-1
+                div.new-books__item-1__info-card.info-card Hi my name is Jeff
+            div.new-books__item-2
+            div.new-books__item-3
+            div.new-books__item-4
+            div.new-books__item-5
+            div.new-books__item-6
+            div.new-books__item-7
+            div.new-books__item-8
+            div.new-books__item-9
     div.right
     footer
         p © 2021 Food Reads
