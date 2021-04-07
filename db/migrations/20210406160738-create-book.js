@@ -9,7 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      cover: {
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       author: {
