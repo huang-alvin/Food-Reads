@@ -12,6 +12,10 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+      return queryInterface.bulkInsert('Users', [
+        {name: 'Jack', email: 'jack@gmail.com', hashedPassword: 'password',           createdAt: new Date(),
+        updatedAt: new Date()}
+      ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -22,5 +26,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+    return queryInterface.bulkDelete('Users', null, {});
   }
 };
