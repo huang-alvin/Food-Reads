@@ -1,5 +1,3 @@
-Shelves:
-
 'use strict';
 
 module.exports = {

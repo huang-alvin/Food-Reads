@@ -25,8 +25,9 @@ html
             a(class='btn btn-sm btn-dark mr-2' href='/login') Login
             a(class='btn btn-sm btn-dark' href='/sign-up') Sign Up
     label Bookshelf
-        //- each shelf in bookshelf
-          a()shelf.status
+        each shelf in bookshelf
+          li
+            a(href='google.com') #{shelf.status}
     table(name='book-list')
         thead
             tr
