@@ -19,6 +19,10 @@ html
           //- right side of the navbar.
         if locals.authenticated
           span(class='navbar-text px-4') Welcome #{user.name}!
+          span(class='navbar-text px-4')
+            a(href='/bookshelf') My Bookshelf
+          span(class='navbar-text px-4')
+            a(href='/users/profile') My Profile
           form(class='form-inline pr-4' action='/signout' method='post')
             button(class='btn btn-sm btn-warning' type='submit') Logout
         else
