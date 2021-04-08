@@ -62,4 +62,27 @@ router.post(
     });
   })
 );
+
+router.get('/demo', asyncHandler(async (req, res, next) => {
+  //! Find Demo User in the Database
+  const user = await User.findOne({
+    where: {
+      email: "demo@gmail.com"
+    },
+  });
+
+  //! Log the Demo User in
+  loginUser(req, res, user);
+
+
+  // Save to session and redirect user to home page
+  return req.session.save((err) => {
+    if (err) next(err);
+    else {
+      return res.redirect("/home");
+    }
+  });
+
+
+}));
 module.exports = router;
