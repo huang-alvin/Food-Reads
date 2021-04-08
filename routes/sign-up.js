@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { check, validationResult } = require("express-validator");
-const { User } = require("../db/models");
+const { User, Bookshelf } = require("../db/models");
 const { asyncHandler } = require("../utils");
 const bcrypt = require("bcryptjs");
 
@@ -43,8 +43,28 @@ router.post(
     if (validationErrors.isEmpty()) {
 
       await user.save();
-
       loginUser(req, res, user);
+      const currentlyReading = await Bookshelf.build({
+        userId: user.id,
+        status: 'Currently Reading',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+      const wantToRead = await Bookshelf.build({
+        userId: user.id,
+        status: 'Want to Read',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+      const read = await Bookshelf.build({
+        userId: user.id,
+        status: 'Read',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+      await currentlyReading.save();
+      await wantToRead.save();
+      await read.save();
       res.redirect("/home");
     } else {
       errors = validationErrors.array().map((err) => err.msg);

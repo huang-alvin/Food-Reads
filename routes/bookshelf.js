@@ -4,7 +4,25 @@ const { User, Bookshelf, Book, Review, Shelf } = require("../db/models");
 const { asyncHandler } = require("../utils");
 const { sessionCheck } = require('../auth')
 
+router.get('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, next) => {
+  const { id } = req.params;
+  const userID = res.locals.user.id;
 
+  const bookshelf = await Bookshelf.findAll({ where: { userId: userID }});
+
+  let shelf
+  for(let i = 0; i < bookshelf.length; i++) {
+    let bookshelfID = bookshelf[i].id
+    shelf = await Shelf.findOne({where: { bookshelfId: bookshelfID, bookId: id}})
+  }
+
+  const book = await Book.findByPk(id, { include: [
+    { model:Review, required: false, where: { userId: userID } },
+    { model:Bookshelf, required: false, where: { userId: userID }}
+  ]})
+
+  res.render('book-delete', { book })
+}))
 
 router.get( "/:id(\\d+)", sessionCheck, asyncHandler(async (req, res, next) => {
   const { id } = req.params;
@@ -63,7 +81,22 @@ router.get('/', async function(req, res, next) {
   res.render('bookshelf', {bookshelf, books});
 });
 
+router.post('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, next) => {
+  const { id } = req.params;
+  const userID = res.locals.user.id;
+
+  const bookshelf = await Bookshelf.findAll({ where: { userId: userID }});
+
+  let shelf
+  for(let i = 0; i < bookshelf.length; i++) {
+    let bookshelfID = bookshelf[i].id
+    shelf = await Shelf.findOne({where: { bookshelfId: bookshelfID, bookId: id}})
+  }
+
+  await shelf.destroy();
+
+  res.redirect('/bookshelf')
+}))
 
 
-
-  module.exports = router;
+module.exports = router;
