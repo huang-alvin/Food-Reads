@@ -37,8 +37,8 @@ footer {
     "0 1 2"
     "3 4 5"
     "6 7 8";
-  grid-template-rows: repeat(3, fr);
-  grid-template-columns: repeat(3, fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   height: 75%;
 }
 .bookshelf {
@@ -48,10 +48,24 @@ footer {
 h5 {
   text-align: center;
 }
-.new-books__item-1__info-card {
-  display: none;
+
+.image {
+  /* height: auto;
+  width: auto; */
+  max-width: 200px;
+  max-height: 275px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.new-books__item-1__info-card:hover {
-  display: block;
-  background-color: black;
+.new-books__item {
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  object-fit: fill;
+  max-width: 200px;
+  max-height: 275px;
+}
+.new-books__item--container {
+  height: 300px;
 }
