@@ -5,7 +5,7 @@ append head
 
 block content
 
-  div.left
+  div.left(class='bookshelf-container')
     label(id='bookshelf') Bookshelf
         each shelf in bookshelf
           a(href='/bookshelf/'+ shelf.id) #{shelf.status}
@@ -13,7 +13,7 @@ block content
   div.center
     table(id='book-list')
         thead
-            tr
+            tr(id='book-list-head')
                 th Book Number
                 th Cover
                 th Title

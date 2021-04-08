@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+body {
+    background-color: #f3eee3
+}
+
+.main-signup__container {
+    min-height: 100%;
+    height: auto;
+}
+
+
+
+.signup__container {
+    background-color: white;
+    padding: 40px;
+    margin: auto;
+    width: 400px; /*just to override your inline CSS */
+    display: block;
+    border-radius: 20px;
+}
+
+#signup-button {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 4px;
+}
+
+#signup-head {
+    font-weight: bolder;
+}
+
+.footer {
+    width: 100%;
+    height: 200px;
+    background-image: url(https://cdn.wallpapersafari.com/41/82/ZCTl06.jpg);
+    background-position-x: left;
+    background-position-y: bottom;
+    background-size: initial;
+    /* background-repeat-x: repeat;
+    background-repeat-y: no-repeat; */
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    opacity: 0.35;
+}

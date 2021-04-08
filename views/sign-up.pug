@@ -2,24 +2,28 @@ include utils.pug
 html
   head
     title="Sign Up"
-    link(rel='stylesheet' href='/stylesheets/reset.css')
+    //- link(rel='stylesheet' href='/stylesheets/reset.css')
+    link(rel='stylesheet' href='/stylesheets/sign-up.css')
   body
-    h1="Sign up for Foodreads"
-    div
-    +validationErrorSummary(errors)
-    h3="Sign up with email"
-    form(action='/sign-up' method='post' id='sign-up')
-        div(id='nameInput')
-            label Name
-            div
-            input(type='text' name='name' placeholder='Name' value=name require)
-        div(id='emailInput')
-            label Email
-            div
-            input(type='email' name='email' placeholder='you@yours.com' value=email require)
-        div(id='passwordInput')
-            label Password
-            div
-            input(type='password' name='password')
-        button(type='submit') Sign Up
-    a(href='/login') Already have an account? Log in here.
+    div.main-signup__container
+      .center
+        div.signup__container
+          h1(id='signup-head')="Sign up for Foodreads"
+            +validationErrorSummary(errors)
+            h3="Sign up with email"
+            form(action='/sign-up' method='post' id='sign-up')
+                div(id='nameInput')
+                    label Name
+                    div
+                    input(type='text' name='name' placeholder='Name' value=name require)
+                div(id='emailInput')
+                    label Email
+                    div
+                    input(type='email' name='email' placeholder='you@yours.com' value=email require)
+                div(id='passwordInput')
+                    label Password
+                    div
+                    input(type='password' name='password')
+                button(type='submit' id='signup-button') Sign Up
+            a(href='/login') Already have an account? Log in here.
+    div.footer

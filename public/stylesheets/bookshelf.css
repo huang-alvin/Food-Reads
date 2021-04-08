@@ -3,5 +3,10 @@
     height: auto;
 }
 #book-list {
-    justify-content: right;
+    border-top: 1px solid black;
+}
+
+#book-list-head {
+    border-bottom: 1px solid black;
+    padding: 22px;
 }
