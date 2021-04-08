@@ -16,7 +16,10 @@ body {
     height: auto;
 }
 
-
+.alert {
+    font-size: 15px;
+    padding: 5px;
+}
 
 .signup__container {
     background-color: white;
