@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Shelf.associate = function (models) {
-    Shelf.hasMany(models.Book, { foreignKey: "bookId" });
+    // Shelf.hasMany(models.Book, { foreignKey: "bookId" });
     Shelf.belongsTo(models.Bookshelf, { foreignKey: "bookshelfId" });
   };
   return Shelf;
