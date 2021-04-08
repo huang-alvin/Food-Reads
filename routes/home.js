@@ -21,6 +21,7 @@ router.get(
       order: [["id", "ASC"]],
     });
 
+    // res.json(bookshelf);
     res.render("home(new)", { bookshelf, latestBooks });
   })
 );
