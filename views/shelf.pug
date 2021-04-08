@@ -1,42 +1,17 @@
-doctype html
-html
-  head
-      block head
-        title="Food Reads"
-        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
-        link(rel='stylesheet' href='/stylesheets/bookshelf.css')
-  body
-    nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
-      a(class='navbar-brand' href='/home') Foodreads
-      button(class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
-        span(class='navbar-toggler-icon')
-      div(class='collapse navbar-collapse' id='navbarText')
-        ul(class='navbar-nav mr-auto')
-          //- Empty menu keeps the content that follows the
-          //- unordered list correctly positioned on the
-          //- right side of the navbar.
-        if locals.authenticated
-          span(class='navbar-text px-4') Welcome #{user.name}!
-          span(class='navbar-text px-4')
-            a(href='/bookshelf') My Bookshelf
-          span(class='navbar-text px-4')
-            a(href='/users/profile') My Profile
-          form(class='form-inline pr-4' action='/signout' method='post')
-            button(class='btn btn-sm btn-warning' type='submit') Logout
-        else
-          span(class='navbar-text px-4')
-            a(class='btn btn-sm btn-dark mr-2' href='/login') Login
-            a(class='btn btn-sm btn-dark' href='/sign-up') Sign Up
+extends layout
 
+append head
+  link(rel='stylesheet' href='/stylesheets/bookshelf.css')
 
+block content
+
+  div.left
     label(id='bookshelf') Bookshelf
         each shelf in bookshelf
-          li
-            a(href='/bookshelf/'+ shelf.id) #{shelf.status}
+          a(href='/bookshelf/'+ shelf.id) #{shelf.status}
 
+  div.center
     table(id='book-list')
-
         thead
             tr
                 th Book Number
@@ -50,7 +25,7 @@ html
             each book in books
                 tr
                     td
-                        ul #{book.id}
+                      ul #{book.id}
                     td
                       img(src=book.cover class='coverImg')
                     td
@@ -64,4 +39,4 @@ html
                     td #{book.Bookshelves[0].status}
                     td #{book.date_published}
                     td
-                        a(class='btn btn-danger ml-2' href=`/bookshelf/delete/` + book.id role='button') Delete
+                        a(href=`/bookshelf/delete/` + book.id type='button') Delete
