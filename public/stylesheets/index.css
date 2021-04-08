@@ -15,8 +15,8 @@ main {
 }
 
 .main-splash {
-    margin: auto;
-    width: 1200px;
+    width: 100%;
+    height: 400px;
     background-image: url("https://s.gr-assets.com/assets/home/homepage_promos/reading_challenge_2021/HomepageMasthead_Desktop@2x.png");
 }
 
