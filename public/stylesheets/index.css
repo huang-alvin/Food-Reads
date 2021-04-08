@@ -1,3 +1,23 @@
-h1 {
-    color: #555555;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
 }
+
+main {
+
+    width: 100%;
+
+}
+
+.main-splash {
+    margin: auto;
+    width: 1200px;
+    background-image: url("https://s.gr-assets.com/assets/home/homepage_promos/reading_challenge_2021/HomepageMasthead_Desktop@2x.png");
+}
+
+

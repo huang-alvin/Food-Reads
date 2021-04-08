@@ -2,10 +2,35 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  main(class='main')
-          h1 Placeholder for Home Page
-          p Splash page signed out user.
+  .main-container
+      .main-splash
+        .main-splash__form
+          h3 New here? Create a free account!
+          form.main-signup__form(action='/sign-up' method='post' id='sign-up')
+            div(id='nameInput')
+                input(type='text' name='name' placeholder='Name' value=name require)
+            div(id='emailInput')
+                input(type='email' name='email' placeholder='you@yours.com' value=email require)
+            div(id='passwordInput')
+                input(type='password' name='password' placeholder='Password')
+            button(type='submit') Sign Up
+      .main-content
+        .sellingPointBoxLeft
+          h3 Deciding what to cook next?
+          p You're in the right place. Tell us what cookbooks or genres you've enjoyed in the past and we'll give you surprisingly insightful recommendations.
+        .sellingPointBoxRight
+          h3 What are your friends reading?
+          p Chances are your friends are discussing their favorit (and least favorite) cookbooks on Foodreads.
+        .discoveryBox
+          h3 What will you discover?
+          .discoveryBox-1
+
+          .discoveryBox-2
+
+
+
