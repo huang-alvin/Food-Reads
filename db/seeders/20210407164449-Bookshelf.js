@@ -22,170 +22,33 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Bookshelves', [
-      {
-      userId: 1,
-      status: 'Want to Read',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      },
-      {
-      userId: 1,
-      status: 'Currently Reading',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      },
-      {
-      userId: 1,
-      status: 'Read',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      },
-      {
-      userId: 2,
-      status: 'Want to Read',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      },
-      {
-      userId: 2,
-      status: 'Currently Reading',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      },
-      {
-      userId: 2,
-      status: 'Read',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      },
-      {
-        userId: 3,
-        status: 'Want to Read',
-        createdAt: new Date(),
-        updatedAt: new Date()
-        },
+    const bookshelves = []
+
+    for (let i = 1; i<=10; i++){
+      const startingThree = [
         {
-        userId: 3,
-        status: 'Currently Reading',
-        createdAt: new Date(),
-        updatedAt: new Date()
-        },
-        {
-        userId: 3,
-        status: 'Read',
-        createdAt: new Date(),
-        updatedAt: new Date()
-        },
-        {
-          userId: 4,
-          status: 'Want to Read',
-          createdAt: new Date(),
-          updatedAt: new Date()
-          },
-          {
-          userId: 4,
+          userId: i,
           status: 'Currently Reading',
           createdAt: new Date(),
           updatedAt: new Date()
           },
           {
-          userId: 4,
-          status: 'Read',
+          userId: i,
+          status: 'Want to Read',
           createdAt: new Date(),
           updatedAt: new Date()
           },
           {
-            userId: 5,
-            status: 'Want to Read',
-            createdAt: new Date(),
-            updatedAt: new Date()
-            },
-            {
-            userId: 5,
-            status: 'Currently Reading',
-            createdAt: new Date(),
-            updatedAt: new Date()
-            },
-            {
-            userId: 5,
-            status: 'Read',
-            createdAt: new Date(),
-            updatedAt: new Date()
-            },
-            {
-              userId: 6,
-              status: 'Want to Read',
-              createdAt: new Date(),
-              updatedAt: new Date()
-              },
-              {
-              userId: 6,
-              status: 'Currently Reading',
-              createdAt: new Date(),
-              updatedAt: new Date()
-              },
-              {
-              userId: 6,
-              status: 'Read',
-              createdAt: new Date(),
-              updatedAt: new Date()
-              },
-              {
-                userId: 7,
-                status: 'Want to Read',
-                createdAt: new Date(),
-                updatedAt: new Date()
-                },
-                {
-                userId: 7,
-                status: 'Currently Reading',
-                createdAt: new Date(),
-                updatedAt: new Date()
-                },
-                {
-                userId: 7,
-                status: 'Read',
-                createdAt: new Date(),
-                updatedAt: new Date()
-                },
-                {
-                  userId: 8,
-                  status: 'Want to Read',
-                  createdAt: new Date(),
-                  updatedAt: new Date()
-                  },
-                  {
-                  userId: 8,
-                  status: 'Currently Reading',
-                  createdAt: new Date(),
-                  updatedAt: new Date()
-                  },
-                  {
-                  userId: 8,
-                  status: 'Read',
-                  createdAt: new Date(),
-                  updatedAt: new Date()
-                  },
-                  {
-                    userId: 9,
-                    status: 'Want to Read',
-                    createdAt: new Date(),
-                    updatedAt: new Date()
-                    },
-                    {
-                    userId: 9,
-                    status: 'Currently Reading',
-                    createdAt: new Date(),
-                    updatedAt: new Date()
-                    },
-                    {
-                    userId: 9,
-                    status: 'Read',
-                    createdAt: new Date(),
-                    updatedAt: new Date()
-                    },
-    ], {});
+          userId: i,
+          status: 'Read',
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+      ];
+      bookshelves.push(...startingThree);
+    }
+
+    return queryInterface.bulkInsert('Bookshelves', bookshelves, {});
   },
 
   down: (queryInterface, Sequelize) => {
