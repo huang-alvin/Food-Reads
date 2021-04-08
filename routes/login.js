@@ -5,6 +5,7 @@ const { User } = require("../db/models");
 const { asyncHandler, handleValidationErrors } = require("../utils");
 const { check, validationResult } = require("express-validator");
 const { loginUser } = require("../auth");
+const { InsufficientStorage } = require("http-errors");
 
 const loginValidator = [
   check("email")
@@ -38,10 +39,16 @@ router.post(
         validPassword = await bcrypt.compare(
           password,
           user.hashedPassword.toString()
-          );
+        );
         if (validPassword) {
           loginUser(req, res, user);
-          res.redirect("/home");
+          req.session.save((err) => {
+            if (err) next(err);
+            else {
+              return res.redirect("/home");
+            }
+          });
+          // res.redirect("/home");
         }
       }
       errors.push("Login failed for the provided email address and password");
