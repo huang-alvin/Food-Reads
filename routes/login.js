@@ -41,7 +41,7 @@ router.post(
           );
         if (validPassword) {
           loginUser(req, res, user);
-          res.redirect("/");
+          res.redirect("/home");
         }
       }
       errors.push("Login failed for the provided email address and password");
