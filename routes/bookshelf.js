@@ -26,10 +26,11 @@ router.get('/', async function(req, res, next) {
     }
   }
   const books = [];
-  const rating = [];
   for(let i = 0; i < bookIds.length; i++) {
-    books.push(await Book.findByPk(bookIds[i], { include: { model:Review, required: false, where: { userId: userID } }}))
-    // rating.push(await Review.findOne({ where: { bookId: bookIds[i]}}))
+    books.push(await Book.findByPk(bookIds[i], { include: [
+      { model:Review, required: false, where: { userId: userID } },
+      { model:Bookshelf, required: false, where: { userId: userID }}
+    ]}))
   }
 
   res.render('bookshelf', {bookshelf, books});
