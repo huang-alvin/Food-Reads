@@ -4,8 +4,35 @@ const { User, Bookshelf, Book, Review, Shelf } = require("../db/models");
 const { asyncHandler } = require("../utils");
 const { sessionCheck } = require('../auth')
 
-router.get('/', async function(req, res, next) {
 
+
+router.get( "/:id(\\d+)", sessionCheck, asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const userID = res.locals.user.id;
+
+  const bookshelf = await Bookshelf.findAll({ where: { userId: userID }});
+
+  const bookIds = [];
+  let shelves = await Shelf.findAll({where: { bookshelfId: id}})
+  for(let j = 0; j < shelves.length; j++){
+    bookIds.push(shelves[j].bookId)
+  }
+
+  const books = [];
+  for(let i = 0; i < bookIds.length; i++) {
+    books.push(await Book.findByPk(bookIds[i], { include: [
+      { model:Review, required: false, where: { userId: userID } },
+      { model:Bookshelf, required: false, where: { userId: userID }}
+    ]}))
+  }
+
+  res.render('shelf', { bookshelf, books })
+}));
+
+
+
+router.get('/', async function(req, res, next) {
+  console.log('here')
   const userID = res.locals.user.id;
   const user = await User.findByPk(userID);
 
@@ -35,6 +62,8 @@ router.get('/', async function(req, res, next) {
 
   res.render('bookshelf', {bookshelf, books});
 });
+
+
 
 
   module.exports = router;
