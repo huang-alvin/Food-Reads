@@ -5,7 +5,7 @@ const { asyncHandler } = require("../utils");
 const { Book } = require("../db/models");
 
 router.get(
-  "/id:(\\d+)",
+  "/:id(\\d+)",
   sessionCheck,
   asyncHandler(async (req, res) => {
     const { id } = req.params;

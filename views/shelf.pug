@@ -34,7 +34,9 @@ html
         each shelf in bookshelf
           li
             a(href='/bookshelf/'+ shelf.id) #{shelf.status}
+
     table(id='book-list')
+
         thead
             tr
                 th Book Number
@@ -48,7 +50,7 @@ html
             each book in books
                 tr
                     td
-                      ul #{book.id}
+                        ul #{book.id}
                     td
                       img(src=book.cover class='coverImg')
                     td
@@ -61,3 +63,5 @@ html
                         ul No reviews yet
                     td #{book.Bookshelves[0].status}
                     td #{book.date_published}
+                    td
+                        a(class='btn btn-danger ml-2' href=`/bookshelf/delete/` + book.id role='button') Delete
