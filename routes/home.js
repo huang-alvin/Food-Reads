@@ -21,13 +21,8 @@ router.get(
       order: [["id", "ASC"]],
     });
 
-<<<<<<< HEAD
     // res.json(bookshelves);
     res.render("home(new)", { bookshelves, latestBooks });
-=======
-    // res.json(bookshelf);
-    res.render("home(new)", { bookshelf, latestBooks });
->>>>>>> main
   })
 );
 
