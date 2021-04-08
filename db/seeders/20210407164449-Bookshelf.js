@@ -1,5 +1,15 @@
 'use strict';
 
+// const {User} = require('../models')
+
+// const helper = async () => {
+//   const users = await User.findAll();
+
+//   console.log(users);
+// }
+
+// helper();
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
@@ -12,14 +22,33 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Bookshelves', [
-      {
-      userId: 1,
-      status: 'Will-Read',
-      createdAt: new Date(),
-      updatedAt: new Date()
-      }
-    ], {});
+    const bookshelves = []
+
+    for (let i = 1; i<=10; i++){
+      const startingThree = [
+        {
+          userId: i,
+          status: 'Currently Reading',
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          userId: i,
+          status: 'Want to Read',
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          userId: i,
+          status: 'Read',
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+      ];
+      bookshelves.push(...startingThree);
+    }
+
+    return queryInterface.bulkInsert('Bookshelves', bookshelves, {});
   },
 
   down: (queryInterface, Sequelize) => {

@@ -1,18 +1,15 @@
 #container {
   display: grid;
-  height: 100%;
-  margin: auto;
-  width: 100%;
   grid-template-areas:
     "left center center right"
     "footer footer footer footer";
-  grid-template-rows: 80% 20%;
+  grid-template-rows: 90% 10%;
   grid-template-columns: 25% 25% 25% 25%;
+  justify-items: center;
 }
 html,
 body {
   margin: 0;
-  height: 100%;
 }
 .left {
   grid-area: left;
@@ -27,9 +24,13 @@ body {
 .right {
   grid-area: right;
 }
-footer {
+.footer {
   grid-area: footer;
-  text-align: center;
+  /* text-align: bottom; */
+  /* align-items: bottom; */
+  display: flex;
+  flex-direction: column;
+  justify-content: bottom;
 }
 .new-books {
   display: grid;
@@ -37,12 +38,10 @@ footer {
     "0 1 2"
     "3 4 5"
     "6 7 8";
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  height: 75%;
+  grid-template-rows: repeat(3, 200px);
+  grid-template-columns: repeat(3, 150px);
 }
 .bookshelf {
-  /* margin-top: 50%; */
   text-align: center;
 }
 h5 {
@@ -50,22 +49,19 @@ h5 {
 }
 
 .image {
-  /* height: auto;
-  width: auto; */
-  max-width: 200px;
-  max-height: 275px;
-  margin: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  height: 100%;
+  /* width: 100%; */
+  /* max-width: 150px; */
+  /* max-height: 200px;  */
+  /* object-fit: fill; */
 }
-.new-books__item {
-  margin-left: auto;
-  margin-right: auto;
+.new-books__item,
+a {
+  display: flex;
   overflow: hidden;
-  object-fit: fill;
-  max-width: 200px;
-  max-height: 275px;
-}
-.new-books__item--container {
-  height: 300px;
+  justify-content: center;
+  margin: 10px 10px 10px 10px;
+  max-width: 150px;
+  max-height: 200px;
+  box-sizing: border-box;
 }
