@@ -41,31 +41,35 @@ router.post(
 
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
-
       await user.save();
       loginUser(req, res, user);
       const currentlyReading = await Bookshelf.build({
         userId: user.id,
-        status: 'Currently Reading',
+        status: "Currently Reading",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
       const wantToRead = await Bookshelf.build({
         userId: user.id,
-        status: 'Want to Read',
+        status: "Want to Read",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
       const read = await Bookshelf.build({
         userId: user.id,
-        status: 'Read',
+        status: "Read",
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       });
       await currentlyReading.save();
       await wantToRead.save();
       await read.save();
-      res.redirect("/home");
+      req.session.save((err) => {
+        if (err) next(err);
+        else {
+          return res.redirect("/home");
+        }
+      });
     } else {
       errors = validationErrors.array().map((err) => err.msg);
       res.render("sign-up", {
