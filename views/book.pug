@@ -24,6 +24,23 @@ block content
             .book-cover-div
                 img(class="book-cover" src=book.cover)
             .shelf-add-div
-
+                if hasBook
+                    p.shelf-add This book is already in your #{shelf.status}-shelf
+                else
+                    form(action='/books' method='post' id='shelf-form')
+                        label(for='shelf-select' id='shelf-label') Add this book to your shelf
+                        select(name='shelf-select' id='shelf-select')
+                            each shelf in userShelvesObj
+                                option(value=shelf.id) #{shelf.status}
+                        button(type='submit') Add
             .rating-add-div
+                if userRating
+                    p.user-rating Your Rating: #{userRating.rating}
+                else
+                    form(action='/reviews' method='post' id='rating-form')
+                        label(for='rating-select' id='rating-label') Add a rating
+                        select(name='rating-select' id='rating-select')
+                            each val in [1,2,3,4,5]
+                                option(value=val) #{val}
+                        button(type='submit') Add
     .right

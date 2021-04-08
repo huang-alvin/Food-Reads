@@ -18,6 +18,9 @@ const { Op } = require("sequelize");
 // check if book is in bookshelf
 // else give a form w/ post route
 
+//after user adds the book to their shelf
+// give them some kind of confirmation like an alert
+
 router.get(
   "/:id(\\d+)",
   sessionCheck,
@@ -40,18 +43,36 @@ router.get(
     const userRating = await Review.findOne({
       where: { [Op.and]: [{ userId }, { bookId: id }] },
     });
-    const userShelves = await Bookshelf.findAll({
+    const userShelvesObj = await Bookshelf.findAll({
       where: {
         userId,
       },
     });
-    // const hasBook = await Shelf.findOne({
-    //   where: {
-    //     [Op.and]: [{ bookId: id }, { [Op.or]: [{ bookshelfId: userShelves }] }],
-    //   },
-    // });
-    res.json([userRating, userShelves]);
-    // res.render("book.pug", { book, ratings, avgRating, userRating });
+    // Storing the user shelf id's in an array to use for the query below
+    const userShelves = userShelvesObj.map((shelf) => shelf.id);
+    // Querying to see if the book exists in any one of the user's bookshelf
+    const hasBook = await Shelf.findOne({
+      where: {
+        [Op.and]: [{ bookId: id }, { [Op.or]: [{ bookshelfId: userShelves }] }],
+      },
+    });
+    let shelf;
+    if (hasBook) {
+      shelf = await Bookshelf.findOne({
+        where: { id: hasBook.bookshelfId },
+      });
+    }
+    // res.json(userShelvesObj);
+    res.render("book.pug", {
+      book,
+      ratings,
+      avgRating,
+      userRating,
+      hasBook,
+      userRating,
+      shelf,
+      userShelvesObj,
+    });
   })
 );
 

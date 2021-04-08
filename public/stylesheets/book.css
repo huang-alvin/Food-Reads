@@ -44,4 +44,17 @@ body {
     "shelf-add"
     "rating-add";
   grid-template-rows: 66% 17% 17%;
+  overflow: hidden;
+}
+.book-cover-div {
+  grid-area: image;
+  overflow: hidden;
+}
+.book-cover {
+}
+.shelf-add-div {
+  grid-area: shelf-add;
+}
+.rating-add-div {
+  grid-area: rating-add;
 }
