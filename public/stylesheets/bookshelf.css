@@ -2,4 +2,6 @@
     width: 75px;
     height: auto;
 }
-
+#book-list {
+    justify-content: right;
+}
