@@ -18,10 +18,6 @@ html
           //- right side of the navbar.
         if locals.authenticated
           span(class='navbar-text px-4') Welcome #{user.name}!
-          span(class='navbar-text px-4')
-            a(href='/bookshelf') My Bookshelf
-          span(class='navbar-text px-4')
-            a(href='/users/profile') My Profile
           form(class='form-inline pr-4' action='/signout' method='post')
             button(class='btn btn-sm btn-warning' type='submit') Logout
         else
@@ -29,35 +25,29 @@ html
             a(class='btn btn-sm btn-dark mr-2' href='/login') Login
             a(class='btn btn-sm btn-dark' href='/sign-up') Sign Up
 
-
-    label(id='bookshelf') Bookshelf
-        each shelf in bookshelf
-          li
-            a(href='/bookshelf/'+ shelf.id) #{shelf.status}
     table(id='book-list')
         thead
             tr
-                th Book Number
+                th #
                 th cover
                 th title
                 th author
-                th avg rating
                 th shelf
                 th date added
         tbody
-            each book in books
-                tr
-                    td
-                      ul #{book.id}
-                    td
-                      img(src=book.cover class='coverImg')
-                    td
-                      a(href=`/books/` + book.id) #{book.name}
-                    td #{book.author}
-                    td
-                      if book.Reviews[0]
-                        ul #{book.Reviews[0].rating}
-                      else
-                        ul No reviews yet
-                    td #{book.Bookshelves[0].status}
-                    td #{book.date_published}
+
+            tr
+                td #{book.id}
+                td
+                    img(src=book.cover class='coverImg')
+                td
+                    a(href=`/books/` + book.id) #{book.name}
+                td #{book.author}
+                td #{book.Bookshelves[0].status}
+                td #{book.date_published}
+        div(class='py-4')
+            p Proceed with deleting this book?
+        div
+            form(action=`/bookshelf/delete/${book.id}` method='post')
+                button(class='btn btn-danger' type='submit') Delete Book
+                a(class='btn btn-warning ml-2' href='/bookshelf' role='button') Cancel

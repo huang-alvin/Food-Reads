@@ -18,6 +18,10 @@ html
           //- right side of the navbar.
         if locals.authenticated
           span(class='navbar-text px-4') Welcome #{user.name}!
+          span(class='navbar-text px-4')
+            a(href='/bookshelf') My Bookshelf
+          span(class='navbar-text px-4')
+            a(href='/users/profile') My Profile
           form(class='form-inline pr-4' action='/signout' method='post')
             button(class='btn btn-sm btn-warning' type='submit') Logout
         else
@@ -30,10 +34,12 @@ html
         each shelf in bookshelf
           li
             a(href='/bookshelf/'+ shelf.id) #{shelf.status}
+
     table(id='book-list')
+
         thead
             tr
-                th #
+                th Book Number
                 th cover
                 th title
                 th author
@@ -43,7 +49,8 @@ html
         tbody
             each book in books
                 tr
-                    td #{book.id}
+                    td
+                        ul #{book.id}
                     td
                       img(src=book.cover class='coverImg')
                     td
@@ -56,3 +63,5 @@ html
                         ul No reviews yet
                     td #{book.Bookshelves[0].status}
                     td #{book.date_published}
+                    td
+                        a(class='btn btn-danger ml-2' href=`/bookshelf/delete/` + book.id role='button') Delete
