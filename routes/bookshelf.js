@@ -21,8 +21,6 @@ router.get('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, nex
     { model:Bookshelf, required: false, where: { userId: userID }}
   ]})
 
-
-  console.log(shelf)
   res.render('book-delete', { book })
 }))
 
