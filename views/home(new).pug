@@ -12,10 +12,16 @@ block content
             p.bookshelf__header: a(href='/bookshelf') My Bookshelf
             .bookshelf__default
                 ul
+<<<<<<< HEAD
                     each bookshelf in bookshelves
                         li: a(href='/bookshelf/' +bookshelf.id) #{bookshelf.status}: #{bookshelf.Books.length}
 
 
+=======
+                    li: a(href='/bookshelf/' +bookshelf[0].id) Currently Reading: #{bookshelf[0].Books.length}
+                    li: a(href='/bookshelf/2') Will Read:
+                    li: a(href='/bookshelf/3') Finished Reading:
+>>>>>>> main
 
 
     div.center
