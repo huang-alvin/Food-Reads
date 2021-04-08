@@ -8,6 +8,22 @@ append head
 
 block content
     div.left
-    .center
+    div.center
+        div.book-info
+            .title-div
+                p.title #{book.name}
+            .author-div
+                p.author By: #{book.author}
+            .rating-info-div
+                p.rating-info Average Rating #{avgRating}  ||  #{ratings.length} ratings
+            .description-div
+                p.description #{book.description}
+            .general-info-div
+                p.general-info Published by #{book.publisher} on #{book.date_published} #{book.pages} Pages
         div.book-card
+            .book-cover-div
+                img(class="book-cover" src=book.cover)
+            .shelf-add-div
+
+            .rating-add-div
     .right

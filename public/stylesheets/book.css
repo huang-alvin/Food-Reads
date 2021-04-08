@@ -20,19 +20,28 @@ body {
   display: grid;
   grid-template-areas:
     "top top"
-    "center center"
+    "center-left center-right"
     "bottom bottom";
-  grid-template-rows: 15% 60% 25%;
+  grid-template-rows: 10% 60% 30%;
   grid-template-columns: 30% 70%;
 }
-.book-card {
-  grid-area: center;
+.book-info {
+  grid-area: center-right;
   display: grid;
-  /* undo the thing below */
   grid-template-areas:
-    "cover info info info"
-    "cover info info info"
-    "shelf desc desc desc"
-    "rate desc desc desc"
-    ". desc desc desc";
+    "title"
+    "author"
+    "ratings-info"
+    "description"
+    "general-info";
+  grid-template-rows: 10% 7% 7% 62% 14%;
+}
+.book-card {
+  grid-area: center-left;
+  display: grid;
+  grid-template-areas:
+    "image"
+    "shelf-add"
+    "rating-add";
+  grid-template-rows: 66% 17% 17%;
 }
