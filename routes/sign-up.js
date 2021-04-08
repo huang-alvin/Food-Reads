@@ -64,7 +64,7 @@ router.post(
       await currentlyReading.save();
       await wantToRead.save();
       await read.save();
-      req.session.save((err) => {
+      return req.session.save((err) => {
         if (err) next(err);
         else {
           return res.redirect("/home");
