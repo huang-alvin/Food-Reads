@@ -42,7 +42,7 @@ router.post(
         );
         if (validPassword) {
           loginUser(req, res, user);
-          req.session.save((err) => {
+          return req.session.save((err) => {
             if (err) next(err);
             else {
               return res.redirect("/home");
