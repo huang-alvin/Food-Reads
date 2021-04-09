@@ -3,8 +3,10 @@ html
   head
     title="Login"
     link(rel='stylesheet' href='/stylesheets/sign-up.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/nav.css')
   body.main-signup__container
-    h1#signup-head="Login for Foodreads"
+    //- h1#signup-head="Login for Foodreads"
+    include nav.pug
     div.signup__container
         +validationErrorSummary(errors)
         form(action="/login" method='post' id='login-form' )

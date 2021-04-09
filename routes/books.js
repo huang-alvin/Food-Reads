@@ -2,8 +2,16 @@ const express = require("express");
 const router = express.Router();
 const { sessionCheck } = require("../auth");
 const { asyncHandler } = require("../utils");
-const { Book, Review, Bookshelf, Shelf } = require("../db/models");
+const {
+  Book,
+  Review,
+  Bookshelf,
+  Shelf,
+  Comment,
+  User,
+} = require("../db/models");
 const { Op } = require("sequelize");
+const comment = require("../db/models/comment");
 
 //------BONUS--------------
 // comment section
@@ -53,7 +61,14 @@ router.get(
         where: { id: hasBook.bookshelfId },
       });
     }
-    // res.json(userShelvesObj);
+
+    // Find associated comment and its user name
+    const commentObj = await Comment.findAll({
+      where: { bookId: id },
+      include: User,
+      order: [["id", "DESC"]],
+    });
+    // res.json(commentObj[0].User.name);
     res.render("book.pug", {
       book,
       ratings,
@@ -63,6 +78,7 @@ router.get(
       userRating,
       shelf,
       userShelvesObj,
+      commentObj,
     });
   })
 );

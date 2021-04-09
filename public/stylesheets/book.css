@@ -22,8 +22,9 @@ body {
     "top top"
     "center-left center-right"
     "bottom bottom";
-  grid-template-rows: 10% 60% 30%;
+  grid-template-rows: 1% 60% 39%;
   grid-template-columns: 30% 70%;
+  margin-top: 5px;
 }
 .book-info {
   grid-area: center-right;
@@ -34,7 +35,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: 10% 7% 7% 55% 21%;
+  grid-template-rows: 10% 7% 7% 56% 20%;
 }
 .book-card {
   grid-area: center-left;
@@ -86,5 +87,47 @@ body {
 .title-div {
   /* display: flex;
   align-items: center; */
-  margin-top: 5px;
+  margin-top: 2px;
+}
+.description-div {
+  overflow: auto;
+}
+.comment-section-div {
+  grid-area: bottom;
+  display: grid;
+  grid-template-areas:
+    "add-comment"
+    "comment-section";
+  grid-template-rows: 15% 85%;
+}
+.comment-section--add {
+  grid-area: add-comment;
+}
+.comment-section {
+  grid-area: comment-section;
+  overflow: auto;
+}
+.comment-div {
+  margin-top: 13px;
+}
+.footer {
+  grid-area: footer;
+}
+.general-info-div {
+  margin-top: 17px;
+}
+#comment-form {
+  display: flex;
+  justify-content: center;
+}
+.comment-label {
+  margin-right: 20px;
+}
+
+.user-comment {
+  width: 50%;
+  margin-right: 20px;
+}
+span.name {
+  margin-bottom: 3px;
 }

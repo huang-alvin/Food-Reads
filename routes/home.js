@@ -12,7 +12,7 @@ router.get(
     const { id } = res.locals.user;
     const latestBooks = await Book.findAll({
       limit: 9,
-      order: [["id", "ASC"]],
+      order: [["id", "DESC"]],
     });
 
     const bookshelves = await Bookshelf.findAll({

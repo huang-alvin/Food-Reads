@@ -1,4 +1,9 @@
 extends layout
+mixin comment(name, comment)
+    .comment-div
+        span.name #{name}:
+        p.comment #{comment}
+
 
 append head
     //- add page specific styles by appending to the head
@@ -27,10 +32,10 @@ block content
                 if hasBook
                     p.shelf-add This book is already in your #{shelf.status}-shelf
                 else
-                    form(action='/books' method='post' id='shelf-form')
+                    form(action='/shelf' method='post' id='shelf-form')
                         input(name='bookId' value=book.id type='hidden')
                         label(for='shelf-select' id='shelf-label') Add this book to your shelf
-                        select(name='shelf' id='shelf-select')
+                        select(name='shelfId' id='shelf-select')
                             each shelf in userShelvesObj
                                 option(value=shelf.id) #{shelf.status}
                         button(type='submit') Add
@@ -45,5 +50,16 @@ block content
                             each val in [1,2,3,4,5]
                                 option(value=val) #{val}
                         button(type='submit') Add
+        div.comment-section-div
+            .add-comment-div
+                form(action='/comments' method='post' id='comment-form')
+                    div.user-comment-div
+                    input(type='hidden' value=book.id name='bookId')
+                    label(for='user-comment' class='comment-label') Comment:
+                    input(name='comment' placeholder='Add a comment...' class='user-comment')
+                    input(type='submit')
+            .comment-section
+                each comment in commentObj
+                    +comment(comment.User.name, comment.comment)
     .right
     include footer.pug
