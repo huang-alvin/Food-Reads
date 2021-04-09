@@ -15,6 +15,7 @@ const bookshelfRouter = require("./routes/bookshelf");
 const bookRouter = require("./routes/books");
 const signOutRouter = require("./routes/signout");
 const reviewRouter = require("./routes/reviews");
+const shelfRouter = require("./routes/shelf");
 const { environment, sessionSecret } = require("./config");
 const { restoreUser } = require("./auth");
 
@@ -55,6 +56,7 @@ app.use("/login", loginRouter);
 app.use("/bookshelf", bookshelfRouter);
 app.use("/signout", signOutRouter);
 app.use("/reviews", reviewRouter);
+app.use("/shelf", shelfRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

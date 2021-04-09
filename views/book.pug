@@ -27,10 +27,10 @@ block content
                 if hasBook
                     p.shelf-add This book is already in your #{shelf.status}-shelf
                 else
-                    form(action='/books' method='post' id='shelf-form')
+                    form(action='/shelf' method='post' id='shelf-form')
                         input(name='bookId' value=book.id type='hidden')
                         label(for='shelf-select' id='shelf-label') Add this book to your shelf
-                        select(name='shelf' id='shelf-select')
+                        select(name='shelfId' id='shelf-select')
                             each shelf in userShelvesObj
                                 option(value=shelf.id) #{shelf.status}
                         button(type='submit') Add
