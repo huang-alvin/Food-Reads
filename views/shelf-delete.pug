@@ -15,7 +15,7 @@ block content
         tbody
                 tr.shelf-table
                     td #{bookshelf.status}
-                    td #{bookshelf.createdAt}
+                    td #{moment(bookshelf.createdAt).format("MMM Do YY")}
                     td
                         a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
         div(class='py-4')
@@ -23,3 +23,4 @@ block content
         div
             form(action=`/bookshelf/delete/shelf/${bookshelf.id}` method='post')
                 button(class='delete-button header-nav__btn' type='submit') Delete Shelf
+  include footer.pug

@@ -25,6 +25,7 @@ body {
   grid-area: right;
 }
 .footer {
+  height: 100px;
   grid-area: footer;
   /* text-align: bottom; */
   /* align-items: bottom; */
