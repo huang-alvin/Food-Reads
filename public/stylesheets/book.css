@@ -103,6 +103,9 @@ body {
 .comment-section--add {
   grid-area: add-comment;
 }
+.comment-section-div {
+  margin-bottom: 50px;
+}
 .comment-section {
   grid-area: comment-section;
   overflow: auto;
@@ -127,7 +130,4 @@ body {
 .user-comment {
   width: 50%;
   margin-right: 20px;
-}
-span.name {
-  margin-bottom: 3px;
 }
