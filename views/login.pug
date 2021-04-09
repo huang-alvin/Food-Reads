@@ -2,10 +2,10 @@ include utils.pug
 html
   head
     title="Login"
-    link(rel='stylesheet' href='/stylesheets/reset.css')
-  body
-    h1="Login for Foodreads"
-    div
+    link(rel='stylesheet' href='/stylesheets/sign-up.css')
+  body.main-signup__container
+    h1#signup-head="Login for Foodreads"
+    div.signup__container
         +validationErrorSummary(errors)
         form(action="/login" method='post' id='login-form' )
             label(for='email') Email Address
