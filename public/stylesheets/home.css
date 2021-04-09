@@ -68,3 +68,7 @@ a {
   max-height: 200px;
   box-sizing: border-box;
 }
+
+li {
+  list-style: none;
+}
