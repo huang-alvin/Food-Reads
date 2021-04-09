@@ -22,8 +22,9 @@ body {
     "top top"
     "center-left center-right"
     "bottom bottom";
-  grid-template-rows: 10% 60% 30%;
+  grid-template-rows: 1% 60% 39%;
   grid-template-columns: 30% 70%;
+  margin-top: 5px;
 }
 .book-info {
   grid-area: center-right;
@@ -34,7 +35,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: 10% 7% 7% 60% 26%;
+  grid-template-rows: 10% 7% 7% 60% 16%;
 }
 .book-card {
   grid-area: center-left;
@@ -90,4 +91,18 @@ body {
 }
 .description-div {
   overflow: auto;
+}
+.comment-section-div {
+  grid-area: bottom;
+  display: grid;
+  grid-template-areas:
+    "add-comment"
+    "comment-section";
+  grid-template-rows: 15% 85%;
+}
+.comment-section--add {
+  grid-area: add-comment;
+}
+.comment-section {
+  grid-area: comment-section;
 }

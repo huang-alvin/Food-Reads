@@ -8,7 +8,6 @@ router.post(
   "/",
   asyncHandler(async (req, res, next) => {
     const { bookId, shelfId } = req.body;
-    const { userId } = req.session.auth;
 
     await Shelf.create({ bookId, bookshelfId: shelfId });
   })
