@@ -4,6 +4,7 @@
         if locals.authenticated
           a.header-nav__link(href="/home") Home
           a.header-nav__link(href="/bookshelf") My Bookshelf
+          a.header-nav__link(href='/books') Books
       span.header-nav__group
         if locals.authenticated
           span.header-nav__text Welcome #{user.name}!
