@@ -1,0 +1,29 @@
+extends layout
+
+append head
+  link(rel='stylesheet' href='/stylesheets/bookshelf.css')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
+
+block content
+    div.new-shelf__container
+        h3 New Shelf
+            form(action="/bookshelf/shelves/create", method="post")
+                label Name
+                    input(type='text' name='shelfName' placeholder='Shelf Name')
+                    button(type='submit' class='header-nav__btn') Create
+
+    .shelves__container.center
+        label Current Shelves
+            table(id='shelves')
+                thead
+                    tr
+                        th Shelf Name
+                        th Data Added
+                tbody
+                    each shelf in bookshelf
+                        tr.shelf-table
+                            td #{shelf.status}
+                            td #{shelf.createdAt}
+                            td
+                              a(href=`./delete/shelf/${shelf.id}`)
+                                button(type='button' id='shelf-delete' class='header-nav__btn' ) Delete

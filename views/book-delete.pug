@@ -2,6 +2,7 @@ extends layout
 
 append head
   link(rel='stylesheet' href='/stylesheets/bookshelf.css')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
 
 block content
   div.center
@@ -26,9 +27,9 @@ block content
                 td #{book.Bookshelves[0].status}
                 td #{book.date_published}
                 td
-                    a(class='cancel-button' href='/bookshelf' type='button') Cancel
+                    a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
         div(class='py-4')
             p Proceed with deleting this book?
         div
             form(action=`/bookshelf/delete/${book.id}` method='post')
-                button(class='delete-button' type='submit') Delete Book
+                button(class='delete-button header-nav__btn' type='submit') Delete Book
