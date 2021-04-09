@@ -18,7 +18,10 @@ block content
                 input(type='email' name='email' placeholder='you@yours.com' value=email require)
             div(id='passwordInput')
                 input(type='password' name='password' placeholder='Password')
-            button(type='submit') Sign Up
+            div(id='signup-btn')
+              button(type='submit') Sign Up
+          a(href='/login/demo'): button#demo-btn Demo User
+
       .main-content
         .top
           .sellingPointBoxLeft
