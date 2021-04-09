@@ -17,12 +17,12 @@ block content
           thead
               tr
                   th Book Number
-                  th cover
-                  th title
-                  th author
-                  th avg rating
-                  th shelf
-                  th date added
+                  th Cover
+                  th Title
+                  th Author
+                  th Rating
+                  th Shelf
+                  th Date Added
           tbody
               each book in books
                   tr
@@ -44,3 +44,4 @@ block content
                           a(href=`/bookshelf/delete/` + book.id type='button') Delete
     else
       ul No books on this shelf
+  include footer.pug

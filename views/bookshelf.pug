@@ -33,11 +33,12 @@ block content
                       img(src=book.cover class='coverImg')
                     td
                       a(href=`/books/` + book.id) #{book.name}
-                    td #{book.author}
-                    td
+                    td(class='author') #{book.author}
+                    td(class='rating')
                       if book.Reviews[0]
                         ul #{book.Reviews[0].rating}
                       else
                         ul No reviews yet
                     td #{book.Bookshelves[0].status}
                     td #{book.date_published}
+  include footer.pug

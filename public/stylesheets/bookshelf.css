@@ -1,3 +1,7 @@
+body {
+    height: 100%;
+}
+
 .coverImg {
     width: 75px;
     height: auto;
@@ -10,3 +14,48 @@
     border-bottom: 1px solid black;
     padding: 22px;
 }
+
+.rating {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.author {
+    margin: auto;
+    padding-right: 3px;
+}
+
+.create-btn {
+    padding: 5px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.shelf-input {
+    font-size: 16px;
+}
+
+.shelf-table-dpl {
+    padding: 8px;
+}
+#shelf-label {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.table-header {
+    margin-top: 10px;
+    justify-content:space-around
+}
+.table-head {
+    font-size: 18px;
+}
+
+.new-shelf__container {
+    padding-top: 60px;
+}
+
+#new-shelf-header {
+    padding-bottom: 8px;
+}
+
+
