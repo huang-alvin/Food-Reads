@@ -24,6 +24,15 @@ router.get('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, nex
   res.render('book-delete', { book })
 }))
 
+router.get('/delete/shelf/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, next) => {
+  const { id } = req.params;
+  const userID = res.locals.user.id;
+
+  const bookshelf = await Bookshelf.findByPk(id);
+
+  res.render('shelf-delete', { bookshelf })
+}))
+
 router.get( "/:id(\\d+)", sessionCheck, asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   const userID = res.locals.user.id;
@@ -47,7 +56,15 @@ router.get( "/:id(\\d+)", sessionCheck, asyncHandler(async (req, res, next) => {
   res.render('shelf', { bookshelf, books })
 }));
 
+router.get('/shelves', sessionCheck, asyncHandler( async (req, res) => {
+  const { id } = req.params;
+  const userID = res.locals.user.id;
 
+  const bookshelf = await Bookshelf.findAll({ where: { userId: userID }});
+
+
+  res.render('shelves', { bookshelf })
+}))
 
 router.get('/', async function(req, res, next) {
   console.log('here')
@@ -94,6 +111,34 @@ router.post('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, ne
   }
 
   await shelf.destroy();
+
+  res.redirect('/bookshelf')
+}))
+
+router.post('/delete/shelf/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, next) => {
+  const { id } = req.params;
+  const userID = res.locals.user.id;
+
+  const bookshelf = await Bookshelf.findByPk(id)
+  console.log(bookshelf)
+
+  await bookshelf.destroy();
+
+  res.redirect('/bookshelf')
+}))
+
+router.post('/shelves/create/', sessionCheck, asyncHandler( async (req, res, next) => {
+  const { shelfName } = req.body;
+  const userID = res.locals.user.id;
+
+  const newBookshelf = await Bookshelf.build({
+    userId: userID,
+    status: shelfName,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+
+  await newBookshelf.save();
 
   res.redirect('/bookshelf')
 }))

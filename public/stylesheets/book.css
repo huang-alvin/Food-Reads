@@ -34,7 +34,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: 10% 7% 7% 62% 14%;
+  grid-template-rows: 10% 7% 7% 55% 21%;
 }
 .book-card {
   grid-area: center-left;
@@ -49,12 +49,42 @@ body {
 .book-cover-div {
   grid-area: image;
   overflow: hidden;
+  margin: 0px 10px 10px 10px;
 }
 .book-cover {
+  height: 100%;
 }
 .shelf-add-div {
   grid-area: shelf-add;
+  display: flex;
+  justify-content: center;
 }
 .rating-add-div {
   grid-area: rating-add;
+  display: flex;
+  justify-content: center;
+}
+#shelf-form {
+  display: flex;
+  justify-content: center;
+  margin: 10px 15px 25px 15px;
+  /* text-align: center; */
+  align-items: center;
+}
+.shelf-add-div {
+  display: flex;
+  justify-content: center;
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+}
+#shelf-label {
+  font-size: 14px;
+}
+#rating-label {
+  margin-right: 7px;
+}
+.title-div {
+  /* display: flex;
+  align-items: center; */
+  margin-top: 5px;
 }
