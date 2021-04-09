@@ -5,18 +5,9 @@ const { asyncHandler } = require("../utils");
 const { Book, Review, Bookshelf, Shelf } = require("../db/models");
 const { Op } = require("sequelize");
 
-// query the book object
-// display book image and its info & review.
-// add button to add to users bookshelf
-// add button to add review
-// allow user to update their review
 //------BONUS--------------
 // comment section
 // allow user to update/delete review
-// if user rating exist say update rating
-// else add a rating!
-// check if book is in bookshelf
-// else give a form w/ post route
 
 //after user adds the book to their shelf
 // give them some kind of confirmation like an alert

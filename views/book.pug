@@ -28,8 +28,9 @@ block content
                     p.shelf-add This book is already in your #{shelf.status}-shelf
                 else
                     form(action='/books' method='post' id='shelf-form')
+                        input(name='bookId' value=book.id type='hidden')
                         label(for='shelf-select' id='shelf-label') Add this book to your shelf
-                        select(name='shelf-select' id='shelf-select')
+                        select(name='shelf' id='shelf-select')
                             each shelf in userShelvesObj
                                 option(value=shelf.id) #{shelf.status}
                         button(type='submit') Add
@@ -38,8 +39,9 @@ block content
                     p.user-rating Your Rating: #{userRating.rating}
                 else
                     form(action='/reviews' method='post' id='rating-form')
+                        input(name='bookId' value=book.id type='hidden')
                         label(for='rating-select' id='rating-label') Add a rating
-                        select(name='rating-select' id='rating-select')
+                        select(name='rating' id='rating-select')
                             each val in [1,2,3,4,5]
                                 option(value=val) #{val}
                         button(type='submit') Add
