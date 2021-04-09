@@ -12,6 +12,7 @@ const {
 } = require("../db/models");
 const { Op } = require("sequelize");
 const comment = require("../db/models/comment");
+const moment = require('moment');
 
 //------BONUS--------------
 // comment section
@@ -79,6 +80,7 @@ router.get(
       shelf,
       userShelvesObj,
       commentObj,
+      moment:moment
     });
   })
 );

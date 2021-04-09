@@ -24,7 +24,7 @@ block content
             .description-div
                 p.description #{book.description}
             .general-info-div
-                p.general-info Published by #{book.publisher} on #{book.date_published} #{book.pages} Pages
+                p.general-info Published by #{book.publisher} on #{moment(book.date_published).format("MMM Do YY")}, #{book.pages} Pages
         div.book-card
             .book-cover-div
                 img(class="book-cover" src=book.cover)
