@@ -1,0 +1,30 @@
+extends layout
+
+append head
+    //- add page specific styles by appending to the head
+    link(rel="stylesheet" href="/stylesheets/home.css")
+    link(rel="stylesheet", href="/stylesheets/books.css")
+    //- add page specific js
+    //- script(src="/javascripts/index.js" type="module" defer)
+
+block content
+    div.left
+        .bookshelf2
+            p.bookshelf__header: a(href='/bookshelf') My Bookshelf
+            .bookshelf__default
+                ul
+                    each bookshelf in bookshelves
+                        li: a(href='/bookshelf/' +bookshelf.id) #{bookshelf.status}: #{bookshelf.Books.length}
+    div.center
+        h5 New Books
+        div.new-books
+            each book, index in latestBooks
+                div(class='new-books__item')
+                    a(href='/books/'+ book.id)
+                        img(class='image' src=book.cover)
+    //- div.right
+    //- .footer
+    //-     p © 2021 Food Reads
+    //-     p
+    //-         a(href="https://github.com/huang-alvin/Food-Reads/wiki") Visit our Github!
+    include footer.pug

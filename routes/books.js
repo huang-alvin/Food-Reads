@@ -20,6 +20,26 @@ const moment = require('moment');
 
 //after user adds the book to their shelf
 // give them some kind of confirmation like an alert
+router.get(
+  "/",
+  sessionCheck,
+  asyncHandler(async (req, res, next) => {
+    const { id } = res.locals.user;
+    const latestBooks = await Book.findAll({
+      order: [["id", "DESC"]],
+    });
+
+    const bookshelves = await Bookshelf.findAll({
+      where: { userId: id },
+      include: Book, // each bookshelf in this array will include ITS OWN ASSOCIATED books
+      order: [["id", "ASC"]],
+    });
+
+    // res.json(bookshelves);
+    res.render("books", { bookshelves, latestBooks });
+  })
+);
+
 
 router.get(
   "/:id(\\d+)",
