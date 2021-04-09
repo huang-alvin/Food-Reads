@@ -104,7 +104,7 @@ body {
   grid-area: add-comment;
 }
 .comment-section-div {
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 .comment-section {
   grid-area: comment-section;
@@ -115,6 +115,8 @@ body {
 }
 .footer {
   grid-area: footer;
+  position: relative;
+  top: 40px;
 }
 .general-info-div {
   margin-top: 17px;
