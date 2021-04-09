@@ -20,6 +20,7 @@
 .header-nav__group {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0px 20px;
 
 }
@@ -27,6 +28,7 @@
 .header-nav__link {
     padding: 0px 20px;
     text-decoration: none;
+    white-space: nowrap;
     transition: all 0.3s ease 0s;
 }
 
@@ -48,7 +50,7 @@
     color:#f4f2e9;
 }
 .header-nav__text {
-    padding: 0px 20px;
+    padding: 3px 20px;
 }
 
 .header-nav__btn {
