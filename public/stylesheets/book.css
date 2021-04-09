@@ -34,7 +34,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: 10% 7% 7% 55% 21%;
+  grid-template-rows: 10% 7% 7% 60% 26%;
 }
 .book-card {
   grid-area: center-left;
@@ -87,4 +87,7 @@ body {
   /* display: flex;
   align-items: center; */
   margin-top: 5px;
+}
+.description-div {
+  overflow: auto;
 }
