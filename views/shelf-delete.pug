@@ -1,0 +1,25 @@
+extends layout
+
+append head
+  link(rel='stylesheet' href='/stylesheets/bookshelf.css')
+  link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
+
+block content
+  div.center
+    table(id='book-list')
+        thead
+            tr
+                th Shelf Name
+                th Date Added
+
+        tbody
+                tr.shelf-table
+                    td #{bookshelf.status}
+                    td #{bookshelf.createdAt}
+                    td
+                        a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
+        div(class='py-4')
+            p Proceed with deleting this shelf?
+        div
+            form(action=`/bookshelf/delete/shelf/${bookshelf.id}` method='post')
+                button(class='delete-button header-nav__btn' type='submit') Delete Shelf
