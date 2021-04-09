@@ -14,10 +14,6 @@ block content
                 ul
                     each bookshelf in bookshelves
                         li: a(href='/bookshelf/' +bookshelf.id) #{bookshelf.status}: #{bookshelf.Books.length}
-
-
-
-
     div.center
         h5 New Books
         div.new-books
@@ -25,10 +21,9 @@ block content
                 div(class='new-books__item')
                     a(href='/books/'+ book.id)
                         img(class='image' src=book.cover)
-
-
-    div.right
-    .footer
-        p © 2021 Food Reads
-        p
-            a(href="https://github.com/huang-alvin/Food-Reads/wiki") Visit our Github!
+    //- div.right
+    //- .footer
+    //-     p © 2021 Food Reads
+    //-     p
+    //-         a(href="https://github.com/huang-alvin/Food-Reads/wiki") Visit our Github!
+    include footer.pug
