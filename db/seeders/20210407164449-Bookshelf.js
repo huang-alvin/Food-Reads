@@ -1,17 +1,9 @@
 'use strict';
 
-// const {User} = require('../models')
-
-// const helper = async () => {
-//   const users = await User.findAll();
-
-//   console.log(users);
-// }
-
-// helper();
+const { User } = require('../models')
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: async (queryInterface, Sequelize) => {
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
@@ -22,31 +14,35 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    const bookshelves = []
+      const currentUsers = await User.findAll({
+        attributes: ['id',],
+      });
 
-    for (let i = 1; i<=10; i++){
-      const startingThree = [
-        {
-          userId: i,
-          status: 'Currently Reading',
-          createdAt: new Date(),
-          updatedAt: new Date()
+      const bookshelves = []
+
+      currentUsers.forEach((user) => {
+        let startingThree = [
+          {
+            userId: user.id,
+            status: 'Currently Reading',
+            createdAt: new Date(),
+            updatedAt: new Date()
           },
           {
-          userId: i,
-          status: 'Want to Read',
-          createdAt: new Date(),
-          updatedAt: new Date()
+            userId: user.id,
+            status: 'Want to Read',
+            createdAt: new Date(),
+            updatedAt: new Date()
           },
           {
-          userId: i,
-          status: 'Read',
-          createdAt: new Date(),
-          updatedAt: new Date()
+            userId: user.id,
+            status: 'Read',
+            createdAt: new Date(),
+            updatedAt: new Date()
           },
-      ];
-      bookshelves.push(...startingThree);
-    }
+        ];
+        bookshelves.push(...startingThree);
+      });
 
     return queryInterface.bulkInsert('Bookshelves', bookshelves, {});
   },
