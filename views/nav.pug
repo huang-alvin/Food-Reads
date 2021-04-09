@@ -1,0 +1,16 @@
+.header-nav__container
+      span.header-nav__group
+        a.header-nav__logo#logo(href="/") foodreads
+        if locals.authenticated
+          a.header-nav__link(href="/home") Home
+          a.header-nav__link(href="/bookshelf") My Bookshelf
+      span.header-nav__group
+        if locals.authenticated
+          span.header-nav__text Welcome #{user.name}!
+          form(action='/signout' method='post')
+            button(class='header-nav__btn' type='submit') Logout
+        else
+          a(href='/login')
+            button.header-nav__btn Login
+          a(href='/sign-up')
+            button.header-nav__btn Sign Up
