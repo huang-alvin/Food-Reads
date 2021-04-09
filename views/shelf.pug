@@ -39,7 +39,7 @@ block content
                         else
                           ul No reviews yet
                       td #{book.Bookshelves[0].status}
-                      td #{book.date_published}
+                      td #{moment(book.date_published).format("MMM Do YY")}
                       td
                           a(href=`/bookshelf/delete/` + book.id type='button') Delete
     else

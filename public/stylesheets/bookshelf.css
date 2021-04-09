@@ -58,4 +58,19 @@ body {
     padding-bottom: 8px;
 }
 
+.shelves__container {
+    min-height: 100%;
+}
 
+.bookshelf-container {
+    display: flex;
+    position: absolute;
+    padding-left: 60px;
+    padding-top: 75px;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    height: 75px;
+}

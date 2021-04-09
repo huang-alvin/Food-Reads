@@ -3,6 +3,9 @@ var router = express.Router();
 const { User, Bookshelf, Book, Review, Shelf } = require("../db/models");
 const { asyncHandler } = require("../utils");
 const { sessionCheck } = require('../auth')
+const moment = require('moment');
+
+// router.use(moment)
 
 router.get('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, next) => {
   const { id } = req.params;
@@ -21,7 +24,7 @@ router.get('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, nex
     { model:Bookshelf, required: false, where: { userId: userID }}
   ]})
 
-  res.render('book-delete', { book })
+  res.render('book-delete', { book, moment:moment })
 }))
 
 router.get('/delete/shelf/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, next) => {
@@ -30,7 +33,7 @@ router.get('/delete/shelf/:id(\\d+)', sessionCheck, asyncHandler( async (req, re
 
   const bookshelf = await Bookshelf.findByPk(id);
 
-  res.render('shelf-delete', { bookshelf })
+  res.render('shelf-delete', { bookshelf, moment:moment })
 }))
 
 router.get( "/:id(\\d+)", sessionCheck, asyncHandler(async (req, res, next) => {
@@ -53,7 +56,7 @@ router.get( "/:id(\\d+)", sessionCheck, asyncHandler(async (req, res, next) => {
     ]}))
   }
 
-  res.render('shelf', { bookshelf, books })
+  res.render('shelf', { bookshelf, books, moment:moment })
 }));
 
 router.get('/shelves', sessionCheck, asyncHandler( async (req, res) => {
@@ -63,7 +66,7 @@ router.get('/shelves', sessionCheck, asyncHandler( async (req, res) => {
   const bookshelf = await Bookshelf.findAll({ where: { userId: userID }});
 
 
-  res.render('shelves', { bookshelf })
+  res.render('shelves', { bookshelf, moment:moment })
 }))
 
 router.get('/', async function(req, res, next) {
@@ -94,8 +97,8 @@ router.get('/', async function(req, res, next) {
       { model:Bookshelf, required: false, where: { userId: userID }}
     ]}))
   }
-
-  res.render('bookshelf', {bookshelf, books});
+  // res.locals.moment=require('moment')
+  res.render('bookshelf', {bookshelf, books, moment:moment});
 });
 
 router.post('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, next) => {
@@ -107,7 +110,8 @@ router.post('/delete/:id(\\d+)', sessionCheck, asyncHandler( async (req, res, ne
   let shelf
   for(let i = 0; i < bookshelf.length; i++) {
     let bookshelfID = bookshelf[i].id
-    shelf = await Shelf.findOne({where: { bookshelfId: bookshelfID, bookId: id}})
+    shelf = await Shelf.findOne({where: { bookshelfId: bookshelfID, bookId: id }})
+    if(shelf) break;
   }
 
   await shelf.destroy();

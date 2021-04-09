@@ -15,7 +15,7 @@ block content
         tbody
                 tr.shelf-table
                     td #{bookshelf.status}
-                    td #{bookshelf.createdAt}
+                    td #{moment(bookshelf.createdAt).format("MMM Do YY")}
                     td
                         a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
         div(class='py-4')

@@ -12,7 +12,7 @@ block content
                 input(type='text' name='shelfName' placeholder='Shelf Name' class='shelf-input')
                 button(type='submit' class='header-nav__btn create-btn') Create
 
-    .shelves__container.center
+    .shelves__container
         div(id='shelf-label')
             label(id='shelf-label') Current Shelves
         table(id='shelves')
@@ -24,8 +24,8 @@ block content
                 each shelf in bookshelf
                     tr.shelf-table
                         td(class='shelf-table-dpl') #{shelf.status}
-                        td(class='shelf-table-dpl') #{shelf.createdAt}
+                        td(class='shelf-table-dpl') #{moment(shelf.createdAt).format("MMM Do YY")}
                         td
                             a(href=`./delete/shelf/${shelf.id}`)
-                            button(type='button' id='shelf-delete' class='header-nav__btn' ) Delete
+                                button(type='button' id='shelf-delete' class='header-nav__btn' ) Delete
     include footer.pug

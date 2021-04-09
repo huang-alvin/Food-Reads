@@ -3,7 +3,7 @@ extends layout
 append head
   link(rel='stylesheet' href='/stylesheets/bookshelf.css')
   link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
-
+  script(type='text/javascript')
 block content
 
   div.left(class='bookshelf-container')
@@ -40,5 +40,5 @@ block content
                       else
                         ul No reviews yet
                     td #{book.Bookshelves[0].status}
-                    td #{book.date_published}
+                    td #{moment(book.date_published).format("MMM Do YY")}
   include footer.pug
