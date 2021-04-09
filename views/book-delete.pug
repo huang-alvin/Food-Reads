@@ -25,7 +25,7 @@ block content
                     a(href=`/books/` + book.id) #{book.name}
                 td #{book.author}
                 td #{book.Bookshelves[0].status}
-                td #{book.date_published}
+                td #{moment(book.date_published).format("MMM Do YY")}
                 td
                     a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
         div(class='py-4')
@@ -33,3 +33,4 @@ block content
         div
             form(action=`/bookshelf/delete/${book.id}` method='post')
                 button(class='delete-button header-nav__btn' type='submit') Delete Book
+    include footer.pug
