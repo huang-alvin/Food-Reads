@@ -1,14 +1,17 @@
 .bookshelf2 {
-    text-align: center;
-
+  text-align: center;
 }
 
 .left {
-    position: absolute;
-    padding-left: 60px;
-    padding-top: 75px;
+  position: absolute;
+  padding-left: 60px;
+  padding-top: 75px;
 }
 
 li {
-    list-style: none;
+  list-style: none;
+}
+.footer {
+  position: relative;
+  top: 60px;
 }
