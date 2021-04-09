@@ -35,7 +35,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: 10% 7% 7% 60% 16%;
+  grid-template-rows: 10% 7% 7% 56% 20%;
 }
 .book-card {
   grid-area: center-left;
@@ -87,7 +87,7 @@ body {
 .title-div {
   /* display: flex;
   align-items: center; */
-  margin-top: 5px;
+  margin-top: 2px;
 }
 .description-div {
   overflow: auto;
@@ -105,4 +105,29 @@ body {
 }
 .comment-section {
   grid-area: comment-section;
+  overflow: auto;
+}
+.comment-div {
+  margin-top: 13px;
+}
+.footer {
+  grid-area: footer;
+}
+.general-info-div {
+  margin-top: 17px;
+}
+#comment-form {
+  display: flex;
+  justify-content: center;
+}
+.comment-label {
+  margin-right: 20px;
+}
+
+.user-comment {
+  width: 50%;
+  margin-right: 20px;
+}
+span.name {
+  margin-bottom: 3px;
 }

@@ -30,7 +30,9 @@ body {
   /* align-items: bottom; */
   display: flex;
   flex-direction: column;
-  justify-content: bottom;
+  /* justify-content: bottom; */
+  margin-top: 10px;
+  /* justify-items: end; */
 }
 .new-books {
   display: grid;
