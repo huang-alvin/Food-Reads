@@ -160,6 +160,10 @@ router.post(
 
     const bookshelf = await Bookshelf.findByPk(id);
 
+    const shelves = await Shelf.findAll({ where: { bookshelfId: id } });
+    for (let i = 0; i < shelves.length; i++) {
+      await shelves[i].destroy();
+    }
     await bookshelf.destroy();
 
     res.redirect("/bookshelf");
