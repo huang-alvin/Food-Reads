@@ -9,7 +9,7 @@ append head
     //- add page specific styles by appending to the head
     link(rel="stylesheet" href="/stylesheets/book.css")
     //- add page specific js
-    //- script(src="/javascripts/index.js" type="module" defer)
+    script(src="/javascripts/index.js" type="module" defer)
 
 block content
     div.left
@@ -38,7 +38,7 @@ block content
                         select(name='shelfId' id='shelf-select')
                             each shelf in userShelvesObj
                                 option(value=shelf.id) #{shelf.status}
-                        button(type='submit') Add
+                        button(type='submit' id='addToShelf') Add
             .rating-add-div
                 if userRating
                     p.user-rating Your Rating: #{userRating.rating}
@@ -49,15 +49,17 @@ block content
                         select(name='rating' id='rating-select')
                             each val in [1,2,3,4,5]
                                 option(value=val) #{val}
-                        button(type='submit') Add
+                        button(type='submit' id='addRating') Add
         div.comment-section-div
             .add-comment-div
-                form(action='/comments' method='post' id='comment-form')
+                form(action='/comments' method='post' id='comment-form' onsubmit='return false;')
                     div.user-comment-div
                     input(type='hidden' value=book.id name='bookId')
+                    input(type='hidden' value=name name='name')
                     label(for='user-comment' class='comment-label') Comment:
                     input(name='comment' placeholder='Add a comment...' class='user-comment')
-                    input(type='submit')
+                    button( id='addComment') Add
+                    //- input(type='submit' id='addComment')
             .comment-section
                 each comment in commentObj
                     +comment(comment.User.name, comment.comment)

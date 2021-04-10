@@ -3,7 +3,7 @@ const router = express.Router();
 const { sessionCheck } = require("../auth");
 const { asyncHandler } = require("../utils");
 const { Comment } = require("../db/models");
-const moment = require('moment');
+const moment = require("moment");
 
 router.post(
   "/",
@@ -13,6 +13,7 @@ router.post(
     const { comment, bookId } = req.body;
 
     await Comment.create({ comment, bookId, userId });
+    res.json({ success: "success" });
   })
 );
 module.exports = router;

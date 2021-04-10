@@ -21,6 +21,7 @@ router.post(
     // 1. Try Build, if err do something
     // 2. if successful, notify user w/ alert or animation
     await Review.create({ bookId, userId, rating });
+    res.json({ success: "success" });
   })
 );
 module.exports = router;
