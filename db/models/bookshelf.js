@@ -14,17 +14,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   Bookshelf.associate = function (models) {
     Bookshelf.belongsTo(models.User, { foreignKey: "userId" });
-    Bookshelf.belongsToMany(
-      models.Book,
-      {
-        through: "Shelf",
-        foreignKey: "bookshelfId",
-        otherKey: "bookId",
-      },
-      {
-        onDelete: "cascade",
-      }
-    );
+    Bookshelf.belongsToMany(models.Book, {
+      through: "Shelf",
+      foreignKey: "bookshelfId",
+      otherKey: "bookId",
+    });
   };
   return Bookshelf;
 };
