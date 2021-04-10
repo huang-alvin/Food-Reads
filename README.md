@@ -62,6 +62,35 @@ router.post(
 In order for the user to log in, we first check to see if the inputs are valid. Then, we find the user in the database based on their email. If we are able to find a user, then we hash their input password and compare it to the hashed password stored in the server. Finally, if the hashed input password matches the stored hashed password, the user is logged in with their session persisted and redirected to home page.
 ##### Session
 Sessions are stored server side using Sequelize.js. For actions that require authorization, the server verifies that a cookie with a matching user id as the user exists in the storage. Upon verification that a session does exist for that user, the user is then allowed to perform CRUD operations. If no such session exists in the storage, then user is redirected to the login page.
+
+````
+// This route is used to login a demo user /login/demo
+
+router.get('/demo', asyncHandler(async (req, res, next) => {
+  //! Find Demo User in the Database
+  const user = await User.findOne({
+    where: {
+      email: "demo@gmail.com"
+    },
+  });
+
+  //! Log the Demo User in
+  loginUser(req, res, user);
+
+
+  // Save to session and redirect user to home page
+  return req.session.save((err) => {
+    if (err) next(err);
+    else {
+      return res.redirect("/home");
+    }
+  });
+
+
+}));
+
+````
+
 ##### AJAX
 When the user makes a request, a fetch containing form data is made to our API. If the request is valid, changes are made in the database to reflect the user request. After completion of the user request, a script on the user side updates the browser to display these changes without refreshing the page or redirecting the user. 
 
