@@ -12,7 +12,7 @@ Food Reads is a web app that connects food lovers by allowing them to review coo
 ![image of book deletion confirmation](https://github.com/huang-alvin/Food-Reads/blob/main/resources/book.png)
 # Structure
 ### Back End
-Food Reads was built using Express for the server with a postgreSQL database. The back end structure utilizes RESTful convention and handles user requests through AJAX. Food Reads is session based and uses BCrypt to safely store user passwords and verify login credentials. 
+Food Reads was built using Express for the server with a postgreSQL database. The back end structure utilizes RESTful convention and handles user requests through our API and modifies the browser through AJAX. Food Reads is session based and uses BCrypt to safely store user passwords and verify login credentials. 
 ### Front End
 The front end was built using Pug and JavaScript. 
 ### List of Technologies
