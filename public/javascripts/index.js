@@ -14,7 +14,7 @@ if (document.querySelector("#addToShelf")) {
       const shelfId = form.get("shelfId");
       const bookId = form.get("bookId");
 
-      const res = await fetch("food-reads.herokuapp.com/shelf", {
+      const res = await fetch("https://food-reads.herokuapp.com/shelf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ shelfId, bookId }),
