@@ -5,26 +5,28 @@ window.addEventListener("load", (event) => {
 //food-reads.herokuapp.com/home
 //localhost:8080/books/22
 // https: http:
-document
-  .querySelector("#addToShelf")
-  .addEventListener("click", async (event) => {
-    event.preventDefault();
-    const form = new FormData(document.querySelector("#shelf-form"));
-    const shelfId = form.get("shelfId");
-    const bookId = form.get("bookId");
+if (document.querySelector("#addToShelf")) {
+  document
+    .querySelector("#addToShelf")
+    .addEventListener("click", async (event) => {
+      event.preventDefault();
+      const form = new FormData(document.querySelector("#shelf-form"));
+      const shelfId = form.get("shelfId");
+      const bookId = form.get("bookId");
 
-    const res = await fetch("food-reads.herokuapp.com/shelf", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ shelfId, bookId }),
+      const res = await fetch("food-reads.herokuapp.com/shelf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ shelfId, bookId }),
+      });
+
+      if (res.ok) {
+        //   console.log("ok");
+        const shelfAdd = document.querySelector(".shelf-add-div");
+        shelfAdd.innerText = "This book is now in your shelf";
+      }
     });
-
-    if (res.ok) {
-      //   console.log("ok");
-      const shelfAdd = document.querySelector(".shelf-add-div");
-      shelfAdd.innerText = "This book is now in your shelf";
-    }
-  });
+}
 
 if (document.querySelector("#addRating")) {
   document
