@@ -12,7 +12,7 @@ const {
 } = require("../db/models");
 const { Op } = require("sequelize");
 const comment = require("../db/models/comment");
-const moment = require('moment');
+const moment = require("moment");
 
 //------BONUS--------------
 // comment section
@@ -39,7 +39,6 @@ router.get(
     res.render("books", { bookshelves, latestBooks });
   })
 );
-
 
 router.get(
   "/:id(\\d+)",
@@ -90,7 +89,10 @@ router.get(
       order: [["id", "DESC"]],
     });
     // res.json(commentObj[0].User.name);
+    // const { userId } = req.session.auth;
+    const { name } = await User.findOne({ where: { id: userId } });
     res.render("book.pug", {
+      name,
       book,
       ratings,
       avgRating,
@@ -100,7 +102,7 @@ router.get(
       shelf,
       userShelvesObj,
       commentObj,
-      moment:moment
+      moment: moment,
     });
   })
 );

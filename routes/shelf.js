@@ -9,7 +9,8 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { bookId, shelfId } = req.body;
 
-    await Shelf.create({ bookId, bookshelfId: shelfId });
+    const shelf = await Shelf.create({ bookId, bookshelfId: shelfId });
+    res.json({ success: "success" });
   })
 );
 

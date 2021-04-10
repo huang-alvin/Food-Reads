@@ -110,8 +110,10 @@ body {
   grid-area: comment-section;
   overflow: auto;
 }
-.comment-div {
-  margin-top: 13px;
+.comment-div,
+.span {
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 .footer {
   grid-area: footer;
