@@ -1,7 +1,3 @@
-window.addEventListener("load", (event) => {
-  console.log("hello from javascript!");
-});
-
 //food-reads.herokuapp.com/home
 //localhost:8080/books/22
 // https: http:
