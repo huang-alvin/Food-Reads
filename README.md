@@ -1,5 +1,6 @@
 # Food-Reads
 Food Reads is a web app that connects food lovers by allowing them to review cook books.
+[link to food reads](https://food-reads.herokuapp.com/)
 ### Home Page 
 ![image of home](https://github.com/huang-alvin/Food-Reads/blob/main/resources/home-page.png)
 ### Splash Page
