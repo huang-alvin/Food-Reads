@@ -59,7 +59,7 @@ router.post(
         }
       }
 ````
-In order for the user to log in, we first check to see if the inputs are valid, with invalid inputs redirecting the user to the login page where the validation errors will be made visible. Then, we find the user in the database based on their email. If we are able to find a user, then we hash their input password and compare it to the hashed password stored in the server. Finally, if the hashed input password matches the stored hashed password, the user is logged in with their session persisted and redirected to home page.
+In order for the user to log in, we first check to see if the inputs are valid. Then, we find the user in the database based on their email. If we are able to find a user, then we hash their input password and compare it to the hashed password stored in the server. Finally, if the hashed input password matches the stored hashed password, the user is logged in with their session persisted and redirected to home page.
 ##### Session
 Sessions are stored server side using Sequelize.js. For actions that require authorization, the server verifies that a cookie with a matching user id as the user exists in the storage. Upon verification that a session does exist for that user, the user is then allowed to perform CRUD operations. If no such session exists in the storage, then user is redirected to the login page.
 ##### AJAX
@@ -88,7 +88,7 @@ if (document.querySelector("#addToShelf")) {
     });
 }
 ````
-This script runs on the client end and grabs the form data and sends it to the server. By not submitting the form, the page does not need to be refreshed to display the updates. Upon a successful response, changes are made only to the parts of the window document that need updating. One thing we had to take into consideration was adding a conditional statement to verify that the submit button existed on the web page. Without that conditional statement, the script would hit an error on pages where the button had been replaced by text to signify that the book had been added to the user shelf and fail to execute.
+One thing we had to take into consideration was adding a conditional statement to verify that the submit button existed on the web page. Without that conditional statement, the script would hit an error on pages where the button had been replaced by text that signified that the book had already been added to the user shelf.
 #### To Do
 Allow users to: 
 1. update profile information such as their email
