@@ -43,8 +43,24 @@ if (document.querySelector("#addRating")) {
       if (res.ok) {
         //   console.log("ok");
         const ratingAdd = document.querySelector(".rating-add-div");
+        ratingAdd.innerHTML = ""
+        const userRating = document.createElement("p")
+        userRating.classList.add("user-rating")
+        userRating.innerText = `Your Rating:`;
+        ratingAdd.appendChild(userRating)
+        const starSpan = document.createElement("span")
+        starSpan.classList.add("star-rating-span")
+        for (let n = 0; n < 5; n++) {
+          const star = document.createElement("i")
+          if (n < rating) {
+            star.classList.add("fa-star", "fas")
+          } else {
+            star.classList.add("fa-star", "far")
+          }
+          starSpan.appendChild(star)
+        }
+        ratingAdd.appendChild(starSpan)
 
-        ratingAdd.innerText = `Your Rating: ${rating}`;
       }
     });
 }
@@ -60,11 +76,11 @@ if (document.querySelector("#addComment")) {
       const name = form.get("name");
 
 
-    const res = await fetch("/comments", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment, bookId }),
-    });
+      const res = await fetch("/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ comment, bookId }),
+      });
 
       if (res.ok) {
         //   console.log("ok");
