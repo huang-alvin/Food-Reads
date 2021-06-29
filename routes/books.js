@@ -57,7 +57,7 @@ router.get(
     if (ratings.length) {
       avgRating =
         ratings.reduce((accum, currRating) => accum + currRating) /
-        ratings.length;
+        ratings.length.toFixed(1);
     }
     const userRating = await Review.findOne({
       where: { [Op.and]: [{ userId }, { bookId: id }] },

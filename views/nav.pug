@@ -5,6 +5,11 @@
           a.header-nav__link(href="/home") Home
           a.header-nav__link(href="/bookshelf") My Bookshelf
           a.header-nav__link(href='/books') Books
+      span.search-bar-container
+        form(action="/search" method="post" id="search-bar")
+          input(name="searchInput" type="text" placeholder="search..." id="search-input")
+          button(type="submit" id="submit-search")
+            <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>
       span.header-nav__group
         if locals.authenticated
           span.header-nav__text Welcome #{user.name}!

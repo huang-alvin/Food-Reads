@@ -10,7 +10,7 @@ if (document.querySelector("#addToShelf")) {
       const shelfId = form.get("shelfId");
       const bookId = form.get("bookId");
 
-      const res = await fetch("https://food-reads.herokuapp.com/shelf", {
+      const res = await fetch("http://localhost:8080/shelf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ shelfId, bookId }),
@@ -33,7 +33,7 @@ if (document.querySelector("#addRating")) {
       const rating = form.get("rating");
       const bookId = form.get("bookId");
 
-      const res = await fetch("https://food-reads.herokuapp.com/reviews", {
+      const res = await fetch("http://localhost:8080/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ rating, bookId }),
@@ -48,38 +48,40 @@ if (document.querySelector("#addRating")) {
     });
 }
 
-document
-  .querySelector("#addComment")
-  .addEventListener("click", async (event) => {
-    event.preventDefault();
-    const form = new FormData(document.querySelector("#comment-form"));
-    const comment = form.get("comment");
-    const bookId = form.get("bookId");
-    const name = form.get("name");
+if (document.querySelector("#addComment")) {
+  document
+    .querySelector("#addComment")
+    .addEventListener("click", async (event) => {
+      event.preventDefault();
+      const form = new FormData(document.querySelector("#comment-form"));
+      const comment = form.get("comment");
+      const bookId = form.get("bookId");
+      const name = form.get("name");
 
-    const res = await fetch("https://food-reads.herokuapp.com/comments", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment, bookId }),
+      const res = await fetch("http://localhost:8080/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ comment, bookId }),
+      });
+
+      if (res.ok) {
+        //   console.log("ok");
+        const commentAdd = document.querySelector(".comment-section");
+
+        const commentDiv = document.createElement("div");
+        const span = document.createElement("span");
+        const commentText = document.createElement("p");
+
+        commentText.innerText = `${comment}`;
+        span.innerText = `${name}:`;
+
+        span.classList.add("name");
+        commentText.classList.add("comment");
+        commentDiv.classList.add("comment-div");
+
+        commentDiv.appendChild(span);
+        commentDiv.appendChild(commentText);
+        commentAdd.prepend(commentDiv);
+      }
     });
-
-    if (res.ok) {
-      //   console.log("ok");
-      const commentAdd = document.querySelector(".comment-section");
-
-      const commentDiv = document.createElement("div");
-      const span = document.createElement("span");
-      const commentText = document.createElement("p");
-
-      commentText.innerText = `${comment}`;
-      span.innerText = `${name}:`;
-
-      span.classList.add("name");
-      commentText.classList.add("comment");
-      commentDiv.classList.add("comment-div");
-
-      commentDiv.appendChild(span);
-      commentDiv.appendChild(commentText);
-      commentAdd.prepend(commentDiv);
-    }
-  });
+}
