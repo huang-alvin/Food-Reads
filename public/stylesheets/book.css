@@ -4,7 +4,7 @@
     "left center center right"
     "footer footer footer footer";
   grid-template-rows: 90% 10%;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 20% 30% 30% 20%;
   justify-items: center;
   height: 100%;
 }
@@ -35,7 +35,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: 10% 7% 7% 56% 20%;
+  grid-template-rows: auto auto 7% auto 20%;
 }
 .book-card {
   grid-area: center-left;
@@ -63,10 +63,12 @@ body {
 .rating-add-div {
   grid-area: rating-add;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 #shelf-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 10px 15px 25px 15px;
   /* text-align: center; */
@@ -135,3 +137,17 @@ body {
   width: 50%;
   margin-right: 20px;
 }
+.fa-star {
+  /* width: 15px; */
+  /* height: 15px; */
+  color: rgb(255, 167, 66);
+}
+.star-rating-edit .fa-star {
+  cursor: pointer;
+}
+#rating-form{
+  display: flex;
+  flex-direction: column;
+}
+
+

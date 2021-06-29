@@ -10,7 +10,7 @@ if (document.querySelector("#addToShelf")) {
       const shelfId = form.get("shelfId");
       const bookId = form.get("bookId");
 
-      const res = await fetch("http://localhost:8080/shelf", {
+      const res = await fetch("/shelf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ shelfId, bookId }),
@@ -33,7 +33,8 @@ if (document.querySelector("#addRating")) {
       const rating = form.get("rating");
       const bookId = form.get("bookId");
 
-      const res = await fetch("http://localhost:8080/reviews", {
+
+      const res = await fetch("/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ rating, bookId }),
@@ -58,11 +59,12 @@ if (document.querySelector("#addComment")) {
       const bookId = form.get("bookId");
       const name = form.get("name");
 
-      const res = await fetch("http://localhost:8080/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ comment, bookId }),
-      });
+
+    const res = await fetch("/comments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ comment, bookId }),
+    });
 
       if (res.ok) {
         //   console.log("ok");
