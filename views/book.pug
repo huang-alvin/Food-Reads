@@ -10,17 +10,19 @@ append head
     link(rel="stylesheet" href="/stylesheets/book.css")
     //- add page specific js
     script(src="/javascripts/index.js" type="module" defer)
+    script(src="/javascripts/stars.js" type="module" defer)
+    script(src="https://kit.fontawesome.com/a07bf13568.js" type="module" crossorigin="anonymous")
 
 block content
     div.left
     div.center
         div.book-info
             .title-div
-                p.title #{book.name}
+                h3.title #{book.name}
             .author-div
                 p.author By: #{book.author}
             .rating-info-div
-                p.rating-info Average Rating #{avgRating}  ||  #{ratings.length} ratings
+                p.rating-info Average Rating #{avgRating.toFixed(1)}  ||  #{ratings.length} ratings
             .description-div
                 p.description #{book.description}
             .general-info-div
@@ -41,12 +43,23 @@ block content
                         button(type='submit' id='addToShelf') Add
             .rating-add-div
                 if userRating
-                    p.user-rating Your Rating: #{userRating.rating}
+                    p.user-rating Your Rating: 
+                    - var n =0
+                    span.star-rating-span 
+                            while n < 5
+                                if n< userRating.rating
+                                    i.fa-star.fas
+                                else 
+                                    i.fa-star.far
+                                - n++
                 else
                     form(action='/reviews' method='post' id='rating-form')
                         input(name='bookId' value=book.id type='hidden')
                         label(for='rating-select' id='rating-label') Add a rating
-                        select(name='rating' id='rating-select')
+                        span.star-rating-edit 
+                            each star in [1,2,3,4,5]
+                                i.fa-star.far
+                        select(name='rating' id='rating-select' hidden)
                             each val in [1,2,3,4,5]
                                 option(value=val) #{val}
                         button(type='submit' id='addRating') Add
