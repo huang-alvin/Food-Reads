@@ -22,7 +22,7 @@ router.get(
     });
 
     // res.json(bookshelves);
-    res.render("home(new)", { bookshelves, latestBooks });
+    res.render("home", { bookshelves, latestBooks });
   })
 );
 

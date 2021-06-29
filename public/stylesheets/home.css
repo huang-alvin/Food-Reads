@@ -14,7 +14,7 @@ body {
 .left {
   grid-area: left;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 .center {
