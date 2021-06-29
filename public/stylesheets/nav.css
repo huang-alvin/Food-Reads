@@ -90,4 +90,15 @@ body {
   margin-right: 14%;
   display: flex;
   align-items: center;
+  /* modal edits */
+  /* flex-direction: column; */
+  position: relative;
+
+}
+
+.search-modal {
+  position: absolute;
+  background: white;
+  width: 265px;
+  top: 100%;
 }
