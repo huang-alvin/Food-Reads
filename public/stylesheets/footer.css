@@ -5,6 +5,7 @@
   background-color: #dfd9c2;
   padding-top: 10px;
   padding-bottom: 10px;
+  height: 100%;
 }
 .icons {
   display: flex;

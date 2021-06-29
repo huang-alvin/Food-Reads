@@ -5,27 +5,29 @@ append head
   link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
 
 block content
-    div.new-shelf__container
-        h3(id='new-shelf-header') New Shelf
-        form(action="/bookshelf/shelves/create", method="post")
-            label Name
-                input(type='text' name='shelfName' placeholder='Shelf Name' class='shelf-input')
-                button(type='submit' class='header-nav__btn create-btn') Create
+    #container
+        .center
+            div.new-shelf__container
+                h3(id='new-shelf-header') New Shelf
+                form(action="/bookshelf/shelves/create", method="post")
+                    label Name
+                        input(type='text' name='shelfName' placeholder='Shelf Name' class='shelf-input')
+                        button(type='submit' class='header-nav__btn create-btn') Create
 
-    .shelves__container
-        div(id='shelf-label')
-            label(id='shelf-label') Current Shelves
-        table(id='shelves')
-            thead(class='table-header')
-                tr
-                    th(class='table-head') Shelf Name
-                    th(class='table-head') Data Added
-            tbody
-                each shelf in bookshelf
-                    tr.shelf-table
-                        td(class='shelf-table-dpl') #{shelf.status}
-                        td(class='shelf-table-dpl') #{moment(shelf.createdAt).format("MMM Do YY")}
-                        td
-                            a(href=`./delete/shelf/${shelf.id}`)
-                                button(type='button' id='shelf-delete' class='header-nav__btn' ) Delete
+            .shelves__container
+                div(id='shelf-label')
+                    label(id='shelf-label') Current Shelves
+                table(id='shelves')
+                    thead(class='table-header')
+                        tr
+                            th(class='table-head') Shelf Name
+                            th(class='table-head') Data Added
+                    tbody
+                        each shelf in bookshelf
+                            tr.shelf-table
+                                td(class='shelf-table-dpl') #{shelf.status}
+                                td(class='shelf-table-dpl') #{moment(shelf.createdAt).format("MMM Do YY")}
+                                td
+                                    a(href=`./delete/shelf/${shelf.id}`)
+                                        button(type='button' id='shelf-delete' class='header-nav__btn' ) Delete
     include footer.pug

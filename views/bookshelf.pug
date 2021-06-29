@@ -17,7 +17,7 @@ block content
       table(id='book-list')
           thead
               tr(id='book-list-head')
-                  th Book Number
+                  //- th Book Number
                   th Cover
                   th Title
                   th Author
@@ -27,8 +27,8 @@ block content
           tbody
               each book in books
                   tr
-                      td
-                        ul #{book.id}
+                      //- td
+                      //-   ul #{book.id}
                       td
                         img(src=book.cover class='coverImg')
                       td

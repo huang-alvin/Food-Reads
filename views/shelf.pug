@@ -5,43 +5,43 @@ append head
   link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
 
 block content
+  div#container
+    div.left
+      label(id='bookshelf') Bookshelf
+          each shelf in bookshelf
+            a(href='/bookshelf/'+ shelf.id) #{shelf.status}
 
-  div.left
-    label(id='bookshelf') Bookshelf
-        each shelf in bookshelf
-          a(href='/bookshelf/'+ shelf.id) #{shelf.status}
-
-  div.center
-    if books.length
-      table(id='book-list')
-          thead
-              tr
-                  th Book Number
-                  th Cover
-                  th Title
-                  th Author
-                  th Rating
-                  th Shelf
-                  th Date Added
-          tbody
-              each book in books
-                  tr
-                      td
-                        ul #{book.id}
-                      td
-                        img(src=book.cover class='coverImg')
-                      td
-                        a(href=`/books/` + book.id) #{book.name}
-                      td #{book.author}
-                      td
-                        if book.Reviews[0]
-                          ul #{book.Reviews[0].rating}
-                        else
-                          ul No reviews yet
-                      td #{book.Bookshelves[0].status}
-                      td #{moment(book.date_published).format("MMM Do YY")}
-                      td
-                          a(href=`/bookshelf/delete/` + book.id type='button') Delete
-    else
-      ul No books on this shelf
+    div.center
+      if books.length
+        table(id='book-list')
+            thead
+                tr
+                    th Book Number
+                    th Cover
+                    th Title
+                    th Author
+                    th Rating
+                    th Shelf
+                    th Date Added
+            tbody
+                each book in books
+                    tr
+                        td
+                          ul #{book.id}
+                        td
+                          img(src=book.cover class='coverImg')
+                        td
+                          a(href=`/books/` + book.id) #{book.name}
+                        td #{book.author}
+                        td
+                          if book.Reviews[0]
+                            ul #{book.Reviews[0].rating}
+                          else
+                            ul No reviews yet
+                        td #{book.Bookshelves[0].status}
+                        td #{moment(book.date_published).format("MMM Do YY")}
+                        td
+                            a(href=`/bookshelf/delete/` + book.id type='button') Delete
+      else
+        ul No books on this shelf
   include footer.pug
