@@ -3,16 +3,18 @@ extends layout
 append head
     link(rel="stylesheet" href="/stylesheets/home.css")
 block content
-    div.center
-        if searchResult.length > 0
-            h5 Search Results
-            div.new-books
-                each book in searchResult
-                    div(class='new-books__item')
-                        a(href='/books/'+ book.id)
-                            img(class='image' src=book.cover)
-        else
-            h5 No Results
+    #container
+        div.center
+            if searchResult.length > 0
+                h5 Search Results
+                div.new-books
+                    each book in searchResult
+                        div(class='new-books__item')
+                            a(href='/books/'+ book.id)
+                                img(class='image' src=book.cover)
+            else
+                h5 No Results
+    include footer.pug
 
 //- div.left
 //-     label(id='bookshelf') Bookshelf
