@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+      block head
+        title="Food Reads"
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        //- link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' type='text/css' href='/stylesheets/nav.css')
+        //-link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
+  body
+    include auth-nav.pug
+
+    div#container
+      block content

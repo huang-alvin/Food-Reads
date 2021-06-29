@@ -21,8 +21,6 @@ router.post(
       },
     });
 
-    // console.log("======", searchResult);
-    // return { searchResult };
     res.render("search", { searchResult });
   })
 );
