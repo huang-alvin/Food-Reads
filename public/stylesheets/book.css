@@ -24,7 +24,7 @@ body {
     "bottom bottom";
   grid-template-rows: 1% 60% 39%;
   grid-template-columns: 30% 70%;
-  margin-top: 5px;
+  margin-top: 5%;
 }
 .book-info {
   grid-area: center-right;
@@ -145,9 +145,7 @@ body {
 .star-rating-edit .fa-star {
   cursor: pointer;
 }
-#rating-form{
+#rating-form {
   display: flex;
   flex-direction: column;
 }
-
-

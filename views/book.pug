@@ -14,67 +14,68 @@ append head
     script(src="https://kit.fontawesome.com/a07bf13568.js" type="module" crossorigin="anonymous")
 
 block content
-    div.left
-    div.center
-        div.book-info
-            .title-div
-                h3.title #{book.name}
-            .author-div
-                p.author By: #{book.author}
-            .rating-info-div
-                p.rating-info Average Rating #{avgRating.toFixed(1)}  ||  #{ratings.length} ratings
-            .description-div
-                p.description #{book.description}
-            .general-info-div
-                p.general-info Published by #{book.publisher} on #{moment(book.date_published).format("MMM Do YY")}, #{book.pages} Pages
-        div.book-card
-            .book-cover-div
-                img(class="book-cover" src=book.cover)
-            .shelf-add-div
-                if hasBook
-                    p.shelf-add This book is already in your #{shelf.status}-shelf
-                else
-                    form(action='/shelf' method='post' id='shelf-form')
-                        input(name='bookId' value=book.id type='hidden')
-                        label(for='shelf-select' id='shelf-label') Add this book to your shelf
-                        select(name='shelfId' id='shelf-select')
-                            each shelf in userShelvesObj
-                                option(value=shelf.id) #{shelf.status}
-                        button(type='submit' id='addToShelf') Add
-            .rating-add-div
-                if userRating
-                    p.user-rating Your Rating: 
-                    - var n =0
-                    span.star-rating-span 
-                            while n < 5
-                                if n< userRating.rating
-                                    i.fa-star.fas
-                                else 
+    div#container
+        div.left
+        div.center
+            div.book-info
+                .title-div
+                    h3.title #{book.name}
+                .author-div
+                    p.author By: #{book.author}
+                .rating-info-div
+                    p.rating-info Average Rating #{avgRating.toFixed(1)}  ||  #{ratings.length} ratings
+                .description-div
+                    p.description #{book.description}
+                .general-info-div
+                    p.general-info Published by #{book.publisher} on #{moment(book.date_published).format("MMM Do YY")}, #{book.pages} Pages
+            div.book-card
+                .book-cover-div
+                    img(class="book-cover" src=book.cover)
+                .shelf-add-div
+                    if hasBook
+                        p.shelf-add This book is already in your #{shelf.status}-shelf
+                    else
+                        form(action='/shelf' method='post' id='shelf-form')
+                            input(name='bookId' value=book.id type='hidden')
+                            label(for='shelf-select' id='shelf-label') Add this book to your shelf
+                            select(name='shelfId' id='shelf-select')
+                                each shelf in userShelvesObj
+                                    option(value=shelf.id) #{shelf.status}
+                            button(type='submit' id='addToShelf') Add
+                .rating-add-div
+                    if userRating
+                        p.user-rating Your Rating:
+                        - var n =0
+                        span.star-rating-span
+                                while n < 5
+                                    if n< userRating.rating
+                                        i.fa-star.fas
+                                    else
+                                        i.fa-star.far
+                                    - n++
+                    else
+                        form(action='/reviews' method='post' id='rating-form')
+                            input(name='bookId' value=book.id type='hidden')
+                            label(for='rating-select' id='rating-label') Add a rating
+                            span.star-rating-edit
+                                each star in [1,2,3,4,5]
                                     i.fa-star.far
-                                - n++
-                else
-                    form(action='/reviews' method='post' id='rating-form')
-                        input(name='bookId' value=book.id type='hidden')
-                        label(for='rating-select' id='rating-label') Add a rating
-                        span.star-rating-edit 
-                            each star in [1,2,3,4,5]
-                                i.fa-star.far
-                        select(name='rating' id='rating-select' hidden)
-                            each val in [1,2,3,4,5]
-                                option(value=val) #{val}
-                        button(type='submit' id='addRating') Add
-        div.comment-section-div
-            .add-comment-div
-                form(action='/comments' method='post' id='comment-form' onsubmit='return false;')
-                    div.user-comment-div
-                    input(type='hidden' value=book.id name='bookId')
-                    input(type='hidden' value=name name='name')
-                    label(for='user-comment' class='comment-label') Comment:
-                    input(name='comment' placeholder='Add a comment...' class='user-comment')
-                    button( id='addComment') Add
-                    //- input(type='submit' id='addComment')
-            .comment-section
-                each comment in commentObj
-                    +comment(comment.User.name, comment.comment)
-    .right
+                            select(name='rating' id='rating-select' hidden)
+                                each val in [1,2,3,4,5]
+                                    option(value=val) #{val}
+                            button(type='submit' id='addRating') Add
+            div.comment-section-div
+                .add-comment-div
+                    form(action='/comments' method='post' id='comment-form' onsubmit='return false;')
+                        div.user-comment-div
+                        input(type='hidden' value=book.id name='bookId')
+                        input(type='hidden' value=name name='name')
+                        label(for='user-comment' class='comment-label') Comment:
+                        input(name='comment' placeholder='Add a comment...' class='user-comment')
+                        button( id='addComment') Add
+                        //- input(type='submit' id='addComment')
+                .comment-section
+                    each comment in commentObj
+                        +comment(comment.User.name, comment.comment)
+        .right
     include footer.pug
