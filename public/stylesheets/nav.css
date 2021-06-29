@@ -65,3 +65,29 @@
 body {
   background-color: #f3efd9;
 }
+
+#search-bar {
+  margin-right: 20%;
+  display: flex;
+  height: 38px;
+  font-size: 16px;
+}
+#search-input {
+  width: 265px;
+  border: 1px solid #ddd;
+  outline: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+#submit-search {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.search-bar-container {
+  margin-right: 14%;
+  display: flex;
+  align-items: center;
+}
