@@ -93,7 +93,6 @@ body {
   /* modal edits */
   /* flex-direction: column; */
   position: relative;
-
 }
 
 .search-modal {
@@ -104,8 +103,12 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-  .header-nav__text{
+  .header-nav__text {
     /* opacity: 0; */
     position: relative;
   }
+}
+
+button {
+  cursor: pointer;
 }
