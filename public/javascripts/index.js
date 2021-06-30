@@ -1,6 +1,18 @@
 //food-reads.herokuapp.com/home
 //localhost:8080/books/22
 // https: http:
+function newAverage(average, total, newRating) {
+  const avg = parseFloat(average)
+  const totalInt = parseInt(total)
+  const newRatingInt = parseInt(newRating) 
+
+  const newTotal = totalInt + 1
+  const newAvg = ((avg*totalInt) + newRatingInt)/newTotal
+
+  return [newAvg.toFixed(1), newTotal]
+}
+
+
 if (document.querySelector("#addToShelf")) {
   document
     .querySelector("#addToShelf")
@@ -42,6 +54,8 @@ if (document.querySelector("#addRating")) {
 
       if (res.ok) {
         //   console.log("ok");
+
+        //Add Star Rating
         const ratingAdd = document.querySelector(".rating-add-div");
         ratingAdd.innerHTML = ""
         const userRating = document.createElement("p")
@@ -61,6 +75,15 @@ if (document.querySelector("#addRating")) {
         }
         ratingAdd.appendChild(starSpan)
 
+        // Update Average and Total Ratings
+        const average = document.querySelector(".avg")
+        const total = document.querySelector(".total")
+        const [newAvg, newTotal ] = newAverage(
+                          average.innerText, 
+                          total.innerText, 
+                          rating)
+        average.innerText = newAvg;
+        total.innerText = newTotal;        
       }
     });
 }
