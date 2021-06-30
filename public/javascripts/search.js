@@ -35,15 +35,14 @@ if (searchBar) {
     search();
   });
 }
-// if (searchModal) {
-//   searchBar.addEventListener("keyup", async (e) => {
-//     e.preventDefault();
 
-//     const searchInput = e.target.value;
+document.addEventListener('click',(e) => {
+  const ignores = [searchModal, searchBar ]
 
-//     if (searchInput.length < 1) {
-//       //   searchModal.classList.add("hidden");
-//       searchModal.hidden = true;
-//     }
-//   });
-// }
+  if(ignores.includes(e.target)) {
+    e.stopPropagation()
+    searchModal.style.display ="flex"
+    return
+  }
+  searchModal.style.display = "none"
+})
