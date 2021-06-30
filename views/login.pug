@@ -4,15 +4,22 @@ html
     title="Login"
     link(rel='stylesheet' href='/stylesheets/sign-up.css')
     link(rel='stylesheet' type='text/css' href='/stylesheets/nav.css')
+    link(rel="stylesheet" href="/stylesheets/home.css")
   body.main-signup__container
     //- h1#signup-head="Login for Foodreads"
     include auth-nav.pug
-    div.signup__container
-        +validationErrorSummary(errors)
-        form(action="/login" method='post' id='login-form' )
-            label(for='email') Email Address
-            input(type='email' name='email' placeholder='Enter email' value= email require)
-            label(for='password') Password
-            input(type='password' name='password' require)
-            button(type='submit') Login
-        a(href='/sign-up') Don't have an account? Sign up here.
+    #container
+      .center
+        div.signup__container
+            h1 Login to FoodReads
+            +validationErrorSummary(errors)
+            form(action="/login" method='post' id='login-form' )
+                div#input-div
+                  label(for='email') Email Address
+                  input(type='email' name='email' placeholder='Enter email' value= email require)
+                div#input-div
+                  label(for='password') Password
+                  input(type='password' name='password' require)
+                button(type='submit') Login
+            a(href='/sign-up') Don't have an account? Sign up here.
+    include footer.pug
