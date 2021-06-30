@@ -9,7 +9,7 @@ router.post(
   "/",
   sessionCheck,
   asyncHandler(async (req, res, next) => {
-    const { searchInput } = req.body;
+    const { searchInput, ajax } = req.body;
 
     const searchResult = await Book.findAll({
       where: {
@@ -21,7 +21,12 @@ router.post(
       },
     });
 
-    res.render("search", { searchResult });
+    if (!ajax) {
+      res.render("search", { searchResult });
+    } else {
+      // console.log(searchResult);
+      res.json(searchResult);
+    }
   })
 );
 
