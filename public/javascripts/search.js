@@ -2,8 +2,8 @@ const searchBar = document.querySelector("#search-input");
 const searchModal = document.querySelector(".search-modal");
 
 if (searchBar) {
-  searchBar.addEventListener("change", async (e) => {
-    e.preventDefault();
+  searchBar.addEventListener("keyup", async (e) => {
+    // e.preventDefault();
     const searchInput = e.target.value;
 
     let delayTimer;
@@ -19,10 +19,10 @@ if (searchBar) {
             body: JSON.stringify({ searchInput, ajax }),
           });
 
-          const { searchResult } = await res.json();
-          console.log(searchResult, "=====");
+          const searchResult = await res.json();
+          console.log({[searchInput]: searchResult});
           // searchModal.classList.remove("hidden");
-          searchModal.hidden = false;
+          searchModal.hidden = true
         }
       }, 500);
     }

@@ -16,10 +16,13 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  background: red;
+  height: 100%;
 }
 .center {
   margin-top: 5%;
   grid-area: center;
+  background:purple;
 }
 .right {
   grid-area: right;
