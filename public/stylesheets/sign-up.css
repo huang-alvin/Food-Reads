@@ -55,6 +55,18 @@ button {
   font-size: 24px;
   margin-bottom: 15px;
 }
+#container {
+  position: relative;
+}
+.image-container {
+  margin-top: 5%;
+  z-index: -1;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  background-position: center;
+  background-image: url(https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjR8fHxlbnwwfHx8fA%3D%3D&w=1000&q=800);
+}
 /*
 .footer {
     width: 100%;

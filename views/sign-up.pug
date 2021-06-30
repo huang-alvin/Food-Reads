@@ -9,8 +9,9 @@ html
   body
     include auth-nav.pug
     #container
+      .image-container
       .center
-        div.main-signup__container
+        div
           div.signup__container
             p#signup-head Sign up for FoodReads
               +validationErrorSummary(errors)
