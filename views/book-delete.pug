@@ -5,32 +5,33 @@ append head
   link(rel='stylesheet' type='text/css' href='/stylesheets/home.css')
 
 block content
-  div.center
-    table(id='book-list')
-        thead
-            tr
-                th Book Number
-                th Cover
-                th Title
-                th Author
-                th Shelf
-                th Date Added
-        tbody
+    div#container
+        div.center
+            table(id='book-list')
+                thead
+                    tr
+                        th Book Number
+                        th Cover
+                        th Title
+                        th Author
+                        th Shelf
+                        th Date Added
+                tbody
 
-            tr
-                td #{book.id}
-                td
-                    img(src=book.cover class='coverImg')
-                td
-                    a(href=`/books/` + book.id) #{book.name}
-                td #{book.author}
-                td #{book.Bookshelves[0].status}
-                td #{moment(book.date_published).format("MMM Do YY")}
-                td
-                    a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
-        div(class='py-4')
-            p Proceed with deleting this book?
-        div
-            form(action=`/bookshelf/delete/${book.id}` method='post')
-                button(class='delete-button header-nav__btn' type='submit') Delete Book
+                    tr
+                        td #{book.id}
+                        td
+                            img(src=book.cover class='coverImg')
+                        td
+                            a(href=`/books/` + book.id) #{book.name}
+                        td #{book.author}
+                        td #{book.Bookshelves[0].status}
+                        td #{moment(book.date_published).format("MMM Do YY")}
+                        td
+                            a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
+                div(class='py-4')
+                    p Proceed with deleting this book?
+                div
+                    form(action=`/bookshelf/delete/${book.id}` method='post')
+                        button(class='delete-button header-nav__btn' type='submit') Delete Book
     include footer.pug

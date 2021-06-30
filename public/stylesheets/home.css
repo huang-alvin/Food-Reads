@@ -1,11 +1,10 @@
 #container {
   display: grid;
-  grid-template-areas:
-    "left center center right"
-    "footer footer footer footer";
-  grid-template-rows: 90% 10%;
+  grid-template-areas: "left center center right";
+  grid-template-rows: 100%;
   grid-template-columns: 25% 25% 25% 25%;
   justify-items: center;
+  min-height: 800px;
 }
 html,
 body {
