@@ -16,7 +16,7 @@ block content
         table(id='book-list')
             thead
                 tr
-                    th Book Number
+                    //- th Book Number
                     th Cover
                     th Title
                     th Author
@@ -26,8 +26,8 @@ block content
             tbody
                 each book in books
                     tr
-                        td
-                          ul #{book.id}
+                        //- td
+                        //-   ul #{book.id}
                         td
                           img(src=book.cover class='coverImg')
                         td
@@ -41,7 +41,7 @@ block content
                         td #{book.Bookshelves[0].status}
                         td #{moment(book.date_published).format("MMM Do YY")}
                         td
-                            a(href=`/bookshelf/delete/` + book.id type='button') Delete
+                            a(href=`/bookshelf/delete/` + book.id type='button').delete-book Delete
       else
         ul No books on this shelf
   include footer.pug

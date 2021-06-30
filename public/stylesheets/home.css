@@ -21,7 +21,7 @@ body {
 .center {
   margin-top: 5%;
   grid-area: center;
-  background:purple;
+  /* background:purple; */
 }
 .right {
   grid-area: right;

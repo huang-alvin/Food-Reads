@@ -20,9 +20,9 @@ if (searchBar) {
           });
 
           const searchResult = await res.json();
-          console.log({[searchInput]: searchResult});
+          // console.log({[searchInput]: searchResult});
           // searchModal.classList.remove("hidden");
-          searchModal.hidden = true
+          searchModal.hidden = true;
         }
       }, 500);
     }
