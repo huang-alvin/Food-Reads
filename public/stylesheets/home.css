@@ -19,10 +19,6 @@ body {
 .center {
   margin-top: 5%;
   grid-area: center;
-<<<<<<< HEAD
-  /* background:purple; */
-=======
->>>>>>> main
 }
 .right {
   grid-area: right;
