@@ -11,6 +11,8 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { searchInput, ajax } = req.body;
 
+    console.log(req.body)
+
     const searchResult = await Book.findAll({
       where: {
         [Op.or]: [
@@ -21,7 +23,10 @@ router.post(
       },
     });
 
-    if (!ajax) {
+    
+
+    if (ajax==="false") {
+      // res.json(searchResult)
       res.render("search", { searchResult });
     } else {
       // console.log(searchResult);
