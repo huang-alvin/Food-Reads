@@ -11,14 +11,16 @@ html
     #container
       .center
         div.signup__container
-            h1 Login to FoodReads
+            p#signup-head Login to FoodReads
             +validationErrorSummary(errors)
             form(action="/login" method='post' id='login-form' )
                 div#input-div
                   label(for='email') Email Address
+                  div
                   input(type='email' name='email' placeholder='Enter email' value= email require)
                 div#input-div
                   label(for='password') Password
+                  div
                   input(type='password' name='password' require)
                 button(type='submit') Login
             a(href='/sign-up') Don't have an account? Sign up here.
