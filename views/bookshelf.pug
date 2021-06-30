@@ -26,13 +26,13 @@ block content
                   th Date Added
           tbody
               each book in books
-                  tr
+                  tr.book-row
                       //- td
                       //-   ul #{book.id}
                       td
-                        img(src=book.cover class='coverImg')
-                      td
-                        a(href=`/books/` + book.id) #{book.name}
+                        a(href=`/books/` + book.id): img(src=book.cover class='coverImg')
+                      td.book-name #{book.name}
+                        //- a(href=`/books/` + book.id) #{book.name}
                       td(class='author') #{book.author}
                       td(class='rating')
                         if book.Reviews[0]
@@ -40,5 +40,5 @@ block content
                         else
                           ul No reviews yet
                       td #{book.Bookshelves[0].status}
-                      td #{moment(book.date_published).format("MMM Do YY")}
+                      td #{moment(book.date_published).format("MMM Do YYYY")}
   include footer.pug
