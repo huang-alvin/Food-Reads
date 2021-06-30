@@ -22,7 +22,13 @@ if (searchBar) {
           const searchResult = await res.json();
           console.log({[searchInput]: searchResult});
           // searchModal.classList.remove("hidden");
-          searchModal.hidden = true
+          searchModal.innerHTML=""
+          searchModal.hidden = false
+
+          searchResult.forEach(book => {
+            searchModal.innerHTML += `<a href="/books/${book.id}">${book.name}</a>`
+          })
+
         }
       }, 500);
     }
