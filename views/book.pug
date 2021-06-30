@@ -23,7 +23,12 @@ block content
                 .author-div
                     p.author By: #{book.author}
                 .rating-info-div
-                    p.rating-info Average Rating #{avgRating.toFixed(1)}  ||  #{ratings.length} ratings
+                    p.rating-info
+                    | Average Rating
+                    span.avg #{avgRating.toFixed(1)}
+                    |  ||
+                    span.total #{ratings.length}
+                    |  ratings
                 .description-div
                     p.description #{book.description}
                 .general-info-div
