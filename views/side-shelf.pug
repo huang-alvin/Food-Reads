@@ -1,0 +1,13 @@
+append head
+    link(rel="stylesheet" href="/stylesheets/side-shelf.css")
+
+.side-shelf
+    h1.bookshelf__header: a(href='/bookshelf'): span.side-shelf-header My Bookshelf
+    .bookshelf__default
+        ul
+            each shelf in bookshelf
+                li: a(href='/bookshelf/' +shelf.id) #{shelf.status}
+                //- :#{bookshelf.Books.length}
+        span.edit-container
+            a(href='/bookshelf/shelves')
+                button(type='button' href='/bookshelf/shelves' class='header-nav__btn') Edit

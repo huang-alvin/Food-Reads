@@ -9,12 +9,13 @@ append head
 block content
     div#container
         div.left
-            .bookshelf
-                p.bookshelf__header: a(href='/bookshelf') My Bookshelf
-                .bookshelf__default
-                    ul
-                        each bookshelf in bookshelves
-                            li: a(href='/bookshelf/' +bookshelf.id) #{bookshelf.status}: #{bookshelf.Books.length}
+            include side-shelf.pug
+            //- .bookshelf
+            //-     p.bookshelf__header: a(href='/bookshelf') My Bookshelf
+            //-     .bookshelf__default
+            //-         ul
+            //-             each bookshelf in bookshelves
+            //-                 li: a(href='/bookshelf/' +bookshelf.id) #{bookshelf.status}: #{bookshelf.Books.length}
         div.center
             h5 New Books
             div.new-books

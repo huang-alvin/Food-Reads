@@ -7,9 +7,10 @@ append head
 block content
   div#container
     div.left
-      label(id='bookshelf') Bookshelf
-          each shelf in bookshelf
-            a(href='/bookshelf/'+ shelf.id) #{shelf.status}
+      include side-shelf.pug
+      //- label(id='bookshelf') Bookshelf
+      //-     each shelf in bookshelf
+      //-       a(href='/bookshelf/'+ shelf.id) #{shelf.status}
 
     div.center
       if books.length
@@ -43,5 +44,7 @@ block content
                         td
                             a(href=`/bookshelf/delete/` + book.id type='button').delete-book Delete
       else
-        ul No books on this shelf
+        .empty-shelf No books in this shelf
+          a(href="/books")
+            button Browse Books
   include footer.pug

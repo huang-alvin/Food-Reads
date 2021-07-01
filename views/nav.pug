@@ -9,7 +9,7 @@ append head
           a.header-nav__link(href="/bookshelf") My Bookshelf
           a.header-nav__link(href='/books') Books
       span.search-bar-container
-        form(action="/search" method="post" id="search-bar")
+        form(action="/search" method="post" id="search-bar" autocomplete="off")
           input(name="searchInput" type="text" placeholder="search..." id="search-input")
           input(name="ajax" type="hidden" value="false")
           button(type="submit" id="submit-search")

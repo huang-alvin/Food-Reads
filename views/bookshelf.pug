@@ -7,13 +7,15 @@ append head
 block content
   div#container
     div.left(class='bookshelf-container')
-      label(id='bookshelf') Bookshelf
-          each shelf in bookshelf
-            a(href='/bookshelf/'+ shelf.id) #{shelf.status}
-      a(href='/bookshelf/shelves')
-        button(type='button' href='/bookshelf/shelves' class='header-nav__btn') Edit
+      include side-shelf.pug
+      //- a(href='/bookshelf/shelves')
+      //-   button(type='button' href='/bookshelf/shelves' class='header-nav__btn') Edit
+      //- label(id='bookshelf') Bookshelf
+      //-     each shelf in bookshelf
+      //-       a(href='/bookshelf/'+ shelf.id) #{shelf.status}
 
     div.center
+      div.bookshelf-name
       table(id='book-list')
           thead
               tr(id='book-list-head')

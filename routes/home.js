@@ -15,14 +15,14 @@ router.get(
       order: [["id", "DESC"]],
     });
 
-    const bookshelves = await Bookshelf.findAll({
+    const bookshelf = await Bookshelf.findAll({
       where: { userId: id },
       include: Book, // each bookshelf in this array will include ITS OWN ASSOCIATED books
       order: [["id", "ASC"]],
     });
 
     // res.json(bookshelves);
-    res.render("home", { bookshelves, latestBooks });
+    res.render("home", { bookshelf, latestBooks });
   })
 );
 

@@ -1,0 +1,28 @@
+.side-shelf {
+  position: fixed;
+  height: 70%;
+  max-height: 560px;
+  /* border: 1px solid rgba(110, 84, 84, 0.753); */
+  margin: auto;
+  margin-top: 75px;
+  background-color: #dfd9c2;
+  border-radius: 2px;
+}
+li > a {
+  text-decoration: none;
+  color: #5d3b35;
+}
+.bookshelf__header > a {
+  text-decoration: none;
+  color: #5d3b35;
+  font-size: 20px;
+}
+.side-shelf-header {
+  font-weight: bolder;
+  border-bottom: 1px solid #5d3b35;
+}
+.edit-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
