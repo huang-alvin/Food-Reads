@@ -1,8 +1,13 @@
 extends layout
-mixin comment(name, comment)
+mixin comment(name, comment, userId, commentUserId)
     .comment-div
         span.name #{name}:
         p.comment #{comment}
+        if userId === commentUserId
+            div.edit-delete-container
+                span.edit edit
+                span.delete delete
+
 
 
 append head
@@ -81,6 +86,7 @@ block content
                         //- input(type='submit' id='addComment')
                 .comment-section
                     each comment in commentObj
-                        +comment(comment.User.name, comment.comment)
+                        +comment(comment.User.name, comment.comment, userId, comment.userId)
+
         .right
     include footer.pug

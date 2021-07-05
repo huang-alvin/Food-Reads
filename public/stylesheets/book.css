@@ -37,7 +37,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: auto auto 7% auto 20%;
+  grid-template-rows: auto 7% 7% auto 20%;
 }
 .book-card {
   grid-area: center-left;
@@ -114,6 +114,22 @@ body {
   grid-area: comment-section;
   overflow: auto;
 }
+.comment-div {
+  border-top: 1px dashed black;
+  padding-top: 10px;
+  position: relative;
+}
+.edit-delete-container {
+  margin-top: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.edit,
+.delete {
+  cursor: pointer;
+  margin-right: 10px;
+}
 .comment-div,
 .span {
   margin-top: 7px;
@@ -133,11 +149,19 @@ body {
 }
 .comment-label {
   margin-right: 20px;
+  height: 35px;
+  display: flex;
+  align-items: center;
 }
 
 .user-comment {
   width: 50%;
   margin-right: 20px;
+  outline: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  padding-left: 5px;
+  border: 1px solid #382110;
 }
 .fa-star {
   /* width: 15px; */
@@ -150,4 +174,13 @@ body {
 #rating-form {
   display: flex;
   flex-direction: column;
+}
+#addComment {
+  height: 35px;
+  color: #f4f2e9;
+  width: 50px;
+  background-color: #382110;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

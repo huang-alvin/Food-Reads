@@ -103,6 +103,7 @@ router.get(
       userShelvesObj,
       commentObj,
       moment: moment,
+      userId,
     });
   })
 );

@@ -4,9 +4,11 @@
   max-height: 560px;
   /* border: 1px solid rgba(110, 84, 84, 0.753); */
   margin: auto;
-  margin-top: 75px;
+  /* margin-top: 75px; */
   background-color: #dfd9c2;
   border-radius: 2px;
+  /* margin-left: 6%; */
+  margin-top: 5%;
 }
 li > a {
   text-decoration: none;
