@@ -124,11 +124,14 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+  display: flex;
 }
 .edit,
 .delete {
-  cursor: pointer;
   margin-right: 10px;
+  border: none;
+  background-color: transparent;
+  color: #382110;
 }
 .comment-div,
 .span {
