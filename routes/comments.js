@@ -29,7 +29,30 @@ router.delete(
 
       res.json({ success: "success" });
     } catch (error) {
-      res.json({ error: `${error}` });
+      res.json({ error: "failed to delete comment" });
+    }
+  })
+);
+
+router.put(
+  "/:commentId(\\d+)",
+  sessionCheck,
+  asyncHandler(async (req, res, next) => {
+    const { commentId } = req.params;
+    const { text } = req.body;
+
+    if (text.length < 1) {
+      return res.json({ error: "input must not be empty" });
+    }
+
+    try {
+      let comment = await Comment.findByPk(commentId);
+      comment.comment = text;
+      await comment.save();
+
+      res.json({ success: "success" });
+    } catch (error) {
+      res.json({ error: "failed to edit comment" });
     }
   })
 );

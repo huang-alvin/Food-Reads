@@ -5,8 +5,8 @@ mixin comment(name, comment, userId, commentUserId, commentId)
         p.comment #{comment}
         if userId === commentUserId
             div.edit-delete-container
-                button( value="delete").delete delete
                 button( value="edit").edit edit
+                button( value="delete").delete delete
                 //- form.edit-form(action="/comments" method="put" id=commentId)
                 //-     input(value=commentId name="commentId" type="hidden")
                 //-     button( value="edit").edit edit
