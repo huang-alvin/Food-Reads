@@ -2,16 +2,15 @@
 //localhost:8080/books/22
 // https: http:
 function newAverage(average, total, newRating) {
-  const avg = parseFloat(average)
-  const totalInt = parseInt(total)
-  const newRatingInt = parseInt(newRating) 
+  const avg = parseFloat(average);
+  const totalInt = parseInt(total);
+  const newRatingInt = parseInt(newRating);
 
-  const newTotal = totalInt + 1
-  const newAvg = ((avg*totalInt) + newRatingInt)/newTotal
+  const newTotal = totalInt + 1;
+  const newAvg = (avg * totalInt + newRatingInt) / newTotal;
 
-  return [newAvg.toFixed(1), newTotal]
+  return [newAvg.toFixed(1), newTotal];
 }
-
 
 if (document.querySelector("#addToShelf")) {
   document
@@ -45,7 +44,6 @@ if (document.querySelector("#addRating")) {
       const rating = form.get("rating");
       const bookId = form.get("bookId");
 
-
       const res = await fetch("/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,33 +55,34 @@ if (document.querySelector("#addRating")) {
 
         //Add Star Rating
         const ratingAdd = document.querySelector(".rating-add-div");
-        ratingAdd.innerHTML = ""
-        const userRating = document.createElement("p")
-        userRating.classList.add("user-rating")
+        ratingAdd.innerHTML = "";
+        const userRating = document.createElement("p");
+        userRating.classList.add("user-rating");
         userRating.innerText = `Your Rating:`;
-        ratingAdd.appendChild(userRating)
-        const starSpan = document.createElement("span")
-        starSpan.classList.add("star-rating-span")
+        ratingAdd.appendChild(userRating);
+        const starSpan = document.createElement("span");
+        starSpan.classList.add("star-rating-span");
         for (let n = 0; n < 5; n++) {
-          const star = document.createElement("i")
+          const star = document.createElement("i");
           if (n < rating) {
-            star.classList.add("fa-star", "fas")
+            star.classList.add("fa-star", "fas");
           } else {
-            star.classList.add("fa-star", "far")
+            star.classList.add("fa-star", "far");
           }
-          starSpan.appendChild(star)
+          starSpan.appendChild(star);
         }
-        ratingAdd.appendChild(starSpan)
+        ratingAdd.appendChild(starSpan);
 
         // Update Average and Total Ratings
-        const average = document.querySelector(".avg")
-        const total = document.querySelector(".total")
-        const [newAvg, newTotal ] = newAverage(
-                          average.innerText, 
-                          total.innerText, 
-                          rating)
+        const average = document.querySelector(".avg");
+        const total = document.querySelector(".total");
+        const [newAvg, newTotal] = newAverage(
+          average.innerText,
+          total.innerText,
+          rating
+        );
         average.innerText = newAvg;
-        total.innerText = newTotal;        
+        total.innerText = newTotal;
       }
     });
 }
@@ -98,12 +97,13 @@ if (document.querySelector("#addComment")) {
       const bookId = form.get("bookId");
       const name = form.get("name");
 
-
       const res = await fetch("/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ comment, bookId }),
       });
+
+      const result = await res.json();
 
       if (res.ok) {
         //   console.log("ok");
@@ -112,6 +112,7 @@ if (document.querySelector("#addComment")) {
         const commentDiv = document.createElement("div");
         const span = document.createElement("span");
         const commentText = document.createElement("p");
+        const editDeleteContainer = document.createElement("div");
 
         commentText.innerText = `${comment}`;
         span.innerText = `${name}:`;
@@ -119,10 +120,16 @@ if (document.querySelector("#addComment")) {
         span.classList.add("name");
         commentText.classList.add("comment");
         commentDiv.classList.add("comment-div");
+        editDeleteContainer.classList.add("edit-delete-container");
+
+        editDeleteContainer.innerHTML = `<button value="delete" class="delete")>delete</button>
+        <button value="edit" class="edit")>edit</button>`;
 
         commentDiv.appendChild(span);
         commentDiv.appendChild(commentText);
         commentAdd.prepend(commentDiv);
+        commentDiv.appendChild(editDeleteContainer);
+        commentDiv.id = result.commentId;
       }
     });
 }

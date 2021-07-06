@@ -1,12 +1,18 @@
 extends layout
-mixin comment(name, comment, userId, commentUserId)
-    .comment-div
+mixin comment(name, comment, userId, commentUserId, commentId)
+    .comment-div(id=commentId)
         span.name #{name}:
         p.comment #{comment}
         if userId === commentUserId
             div.edit-delete-container
-                span.edit edit
-                span.delete delete
+                button( value="edit").edit edit
+                button( value="delete").delete delete
+                //- form.edit-form(action="/comments" method="put" id=commentId)
+                //-     input(value=commentId name="commentId" type="hidden")
+                //-     button( value="edit").edit edit
+                //- form.edit-form(action="/comments" method="delete" id=commentId)
+                //-     input(value=commentId name="commentId" type="hidden")
+                //-     button( value="delete").delete delete
 
 
 
@@ -16,6 +22,7 @@ append head
     //- add page specific js
     script(src="/javascripts/index.js" type="module" defer)
     script(src="/javascripts/stars.js" type="module" defer)
+    script(src="/javascripts/comments.js" type="module" defer)
     script(src="https://kit.fontawesome.com/a07bf13568.js" type="module" crossorigin="anonymous")
 
 block content
@@ -86,7 +93,7 @@ block content
                         //- input(type='submit' id='addComment')
                 .comment-section
                     each comment in commentObj
-                        +comment(comment.User.name, comment.comment, userId, comment.userId)
+                        +comment(comment.User.name, comment.comment, userId, comment.userId, comment.id)
 
         .right
     include footer.pug
