@@ -31,8 +31,8 @@ block content
                             a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
             div(class='py-4')
                 p Proceed with deleting this book?
-                form(action=`/bookshelf/delete/${book.id}` method='post')
-                button(class='delete-button header-nav__btn' type='submit') Delete Book
-                a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
+                form(action=`/bookshelf/delete/${book.id}` method='post').delete-book-form
+                    button(class='delete-button header-nav__btn' type='submit') Delete Book
+                    a(class='cancel-button header-nav__btn' href='/bookshelf' type='button') Cancel
             div
     include footer.pug

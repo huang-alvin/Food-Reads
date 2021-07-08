@@ -10,9 +10,9 @@ block content
             div.new-shelf__container
                 h3(id='new-shelf-header') New Shelf
                 form(action="/bookshelf/shelves/create", method="post")
-                    label Name
-                        input(type='text' name='shelfName' placeholder='Shelf Name' class='shelf-input')
-                        button(type='submit' class='header-nav__btn create-btn') Create
+                    label.new-shelf-label Name
+                    input(type='text' name='shelfName' placeholder='Shelf Name' class='shelf-input')
+                    button(type='submit' class='header-nav__btn create-btn') Create
 
             .shelves__container
                 div(id='shelf-label')
