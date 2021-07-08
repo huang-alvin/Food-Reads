@@ -233,3 +233,7 @@ body {
   border-radius: 10px;
   height: 10%;
 }
+
+.rating-info-div > span {
+  margin-left: 7px;
+}
