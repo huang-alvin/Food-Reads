@@ -37,7 +37,7 @@ body {
     "ratings-info"
     "description"
     "general-info";
-  grid-template-rows: auto 7% 7% auto 20%;
+  grid-template-rows: 15% 7% 7% 56% 15%;
 }
 .book-card {
   grid-area: center-left;
@@ -53,6 +53,9 @@ body {
   grid-area: image;
   overflow: hidden;
   margin: 0px 10px 10px 10px;
+  max-height: 350px;
+  display: flex;
+  justify-content: center;
 }
 .book-cover {
   height: 100%;
@@ -207,4 +210,26 @@ body {
   font-size: 16px;
   padding-left: 5px;
   border: 1px solid #382110;
+}
+#addRating,
+#addToShelf {
+  color: #f4f2e9;
+  background-color: #382110;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#addToShelf {
+  margin-top: 1%;
+  width: 60%;
+}
+::-webkit-scrollbar {
+  border-radius: 10px;
+  width: 7px;
+  background-color: rgb(222 218 218);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #382110;
+  border-radius: 10px;
+  height: 10%;
 }
