@@ -122,8 +122,8 @@ if (document.querySelector("#addComment")) {
         commentDiv.classList.add("comment-div");
         editDeleteContainer.classList.add("edit-delete-container");
 
-        editDeleteContainer.innerHTML = `<button value="delete" class="delete")>delete</button>
-        <button value="edit" class="edit")>edit</button>`;
+        editDeleteContainer.innerHTML = `<button value="edit" class="edit")>edit</button><button value="delete" class="delete")>delete</button>
+        `;
 
         commentDiv.appendChild(span);
         commentDiv.appendChild(commentText);

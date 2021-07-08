@@ -35,6 +35,10 @@ button {
   margin-top: 4px;
   margin-bottom: 4px;
   padding: 4px;
+  background-color: #382110;
+  color: #f4f2e9;
+  border: none;
+  border-radius: 5px;
 }
 
 #signup-head {
