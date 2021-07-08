@@ -1,6 +1,4 @@
-//food-reads.herokuapp.com/home
-//localhost:8080/books/22
-// https: http:
+let commentInput = document.querySelector(".user-comment");
 function newAverage(average, total, newRating) {
   const avg = parseFloat(average);
   const totalInt = parseInt(total);
@@ -130,6 +128,7 @@ if (document.querySelector("#addComment")) {
         commentAdd.prepend(commentDiv);
         commentDiv.appendChild(editDeleteContainer);
         commentDiv.id = result.commentId;
+        commentInput.value = "";
       }
     });
 }
